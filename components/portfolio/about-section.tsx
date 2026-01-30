@@ -1,0 +1,580 @@
+"use client";
+
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, Briefcase, GraduationCap, Code2, Award } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import Shuffle from "@/components/ui/Shuffle";
+import Stack from "@/components/ui/Stack";
+import CircularGallery from "@/components/ui/CircularGallery";
+const skillsfront = [
+  "JavaScript (ES6+)",
+  "TypeScript",
+  "React.js",
+  "Next.js",
+  "Tailwind CSS",
+  "Flutter",
+  "React Native",
+];
+
+const skillsback = [
+  "Node.js", 
+  "Express.js",
+  "C# (.NET)",             
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Azure PlayFab",         
+  "Firebase",
+];
+
+const cybersec = [
+  "Python (Scripting)",    
+  "Linux (Kali/Ubuntu)",   
+  "Wireshark",            
+  "Nmap",                        
+  "Git / GitHub",          
+  "Identity Management",   
+];
+
+export function AboutSection() {
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: leftRef, isRevealed: leftRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: rightRef, isRevealed: rightRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: educationRef, isRevealed: educationRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: otherSkillsRef, isRevealed: otherSkillsRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ triggerOnce: false });
+
+  return (
+    <section className="py-16 lg:py-24">
+      {/* Section Header*/}
+      <div 
+        ref={headerRef}
+        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8 mb-16 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+      >
+        <div className="space-y-4 flex-1">
+          <Shuffle
+            text="About Me"
+            tag="h2"
+            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            shuffleDirection="right"
+            duration={0.35}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={false}
+            triggerOnHover
+            respectReducedMotion={true}
+            loop={false}
+            loopDelay={0}
+          />
+          <p className="text-muted-foreground max-w-2xl">
+                Developing code. Securing data. Communicating value. I’m a tech student exploring the intersection of software engineering and digital defense, with a unique eye for public relations and community engagement.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
+              <MapPin className="h-4 w-4" />
+              Manila City, PH
+            </span>
+            <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
+              <Briefcase className="h-4 w-4" />
+              Open to work
+            </span>
+            <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
+              <GraduationCap className="h-4 w-4" />
+              CPE @ PUP Manila
+            </span>
+          </div>
+        </div>
+        
+          {/* Profile Picture*/}
+          <div className="relative group shrink-0 animate-slide-in-right">
+            <div className="overflow-hidden rounded-2xl w-72 h-72 sm:w-96 sm:h-96">
+              <Stack
+                randomRotation={false}
+                sensitivity={200}
+                sendToBackOnClick={true}
+                cards={[
+                  "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
+                  "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
+                  "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
+                  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
+                ].map((src, i) => (
+                  <img 
+                    key={i} 
+                    src={src} 
+                    alt={`card-${i + 1}`} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
+                ))}
+                autoplay={false}
+                autoplayDelay={3000}
+                pauseOnHover={false}
+              />
+            {/* Status indicator */}
+            <div className="absolute -bottom-1 -right-1 flex items-center justify-center">
+              <span className="relative flex h-4 w-4">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-background"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+        {/* Left column - Personal info */}
+        <div 
+          ref={leftRef}
+          className={`space-y-8 scroll-reveal-left ${leftRevealed ? 'revealed' : ''}`}
+        >
+
+          {/* Skills */}
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              FRONT END
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skillsfront.map((skill, index) => (
+                <Badge
+                  key={skill}
+                  variant="secondary"
+                  className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              BACKEND
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skillsback.map((skill, index) => (
+                <Badge
+                  key={skill}
+                  variant="secondary"
+                  className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              CYBERSECURITY
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {cybersec.map((skill, index) => (
+                <Badge
+                  key={skill}
+                  variant="secondary"
+                  className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+
+        {/* Right column - Bio & Experience */}
+        <div 
+          ref={rightRef}
+          className={`space-y-12 scroll-reveal-right ${rightRevealed ? 'revealed' : ''}`}
+        >
+          {/* Bio Card */}
+          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+            <div className="space-y-4 text-muted-foreground">
+              <p className="text-lg leading-relaxed">
+                {"Mary Ruth Relator is a Computer Engineering student at PUP Manila, specializing in software development and cybersecurity. A dedicated builder and problem-solver, she actively participates in hackathons and technical projects, focusing on creating secure, scalable applications."}
+              </p>
+              <p className="text-lg leading-relaxed">
+                {"Beyond the codebase, she is a prominent student leader who has held executive roles across eight organizations including VP for Business Development and Chief Public Relations Officer. She uniquely bridges the gap between engineering and industry, leveraging her technical foundation to lead partnerships and manage stakeholder interests for major tech events."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Education Section */}
+      <div 
+        ref={educationRef}
+        className={`mt-24 space-y-10 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+      >
+        <Shuffle
+          text="Education"
+          tag="h2"
+          className="text-3xl font-bold tracking-tight sm:text-4xl"
+          shuffleDirection="right"
+          duration={0.35}
+          animationMode="evenodd"
+          shuffleTimes={1}
+          ease="power3.out"
+          stagger={0.03}
+          threshold={0.1}
+          triggerOnce={false}
+          triggerOnHover
+          respectReducedMotion={true}
+          loop={false}
+          loopDelay={0}
+        />
+        
+        <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+          <div className="flex items-start gap-4 relative z-10">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+              <GraduationCap className="h-6 w-6 text-accent" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">Bachelor of Science in Computer Engineering</h3>
+              <p className="text-muted-foreground">Polytechnic University of the Philippines - Manila</p>
+              <p className="text-sm text-muted-foreground">2024 - Present</p>
+            </div>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+              <Image
+                src="/PUP.png"
+                alt="PUP Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+          <div className="flex items-start gap-4 relative z-10">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+              <GraduationCap className="h-6 w-6 text-accent" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">STEM - Science, Technology, Engineering, and Mathematics</h3>
+              <p className="text-muted-foreground">Arellano University - Jose Abad Santos Campus</p>
+              <p className="text-sm text-muted-foreground">2022 - 2024</p>
+            </div>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+              <Image
+                src="/AU.png"
+                alt="Arellano University Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Other Skills Section */}
+      <div 
+        ref={otherSkillsRef}
+        className={`mt-24 space-y-10 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+      >
+        <Shuffle
+          text="Other Skills"
+          tag="h2"
+          className="text-3xl font-bold tracking-tight sm:text-4xl"
+          shuffleDirection="right"
+          duration={0.35}
+          animationMode="evenodd"
+          shuffleTimes={1}
+          ease="power3.out"
+          stagger={0.03}
+          threshold={0.1}
+          triggerOnce={false}
+          triggerOnHover
+          respectReducedMotion={true}
+          loop={false}
+          loopDelay={0}
+        />
+        
+        {/* Public Relations Card */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                <Award className="h-6 w-6 text-accent" />
+              </div>
+              <div className="space-y-3 flex-1">
+                <h3 className="text-xl font-semibold">Public Relations / Partnerships</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Since my freshman year, I have served as a core member of the Partnerships and Public Relations team. 
+                  In this role, I have successfully spearheaded the organization of over 7 major tech events. To date, 
+                  I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {["Communication", "Event Planning", "Public Relations", "Media Partnerships", "Negotiation & Persuasion" ].map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
+            <div className="relative w-full h-64 overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                alt="Team collaboration"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+
+        {/* Journalism Card */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
+            <div className="relative w-full h-64 overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                alt="Team collaboration"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+            </div>
+          </div>
+
+          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                <Award className="h-6 w-6 text-accent" />
+              </div>
+              <div className="space-y-3 flex-1">
+                <h3 className="text-xl font-semibold">Journalism</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A dedicated journalist since primary school, I have contributed to three distinct 
+                  school publications and competed at the Regional Schools Press Conference (RSPC). 
+                  My commitment to the craft culminated in graduating with the Journalist of the Year 
+                  award in high school, reflecting a long-standing expertise in storytelling, technical 
+                  writing, and competitive editorial work.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {["Communication", "News Writing", "Literary", "Blogs", "Media", "Opinion Articles"].map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Student Leadership Card */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                <Award className="h-6 w-6 text-accent" />
+              </div>
+              <div className="space-y-3 flex-1">
+                <h3 className="text-xl font-semibold">Student Leadership</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  I am a versatile student leader with a decade of experience across four institutions, 
+                  holding key executive roles including President, Auditor, and PIO. Proven track record 
+                  in organizational governance and community service through extensive non-profit volunteerism. 
+                  Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral 
+                  oversight and student body administration
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {["Organizational Governance & Policy", "Leadership", "Stakeholder Management", "Finance and Auditing", "Operations Management", "Youth Governance" ].map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="rounded-full px-3 py-1 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
+            <div className="relative w-full h-64 overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                alt="Student leadership"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Circular Gallery Section */}
+      <div className="mt-32" style={{ height: '600px', position: 'relative' }}>
+        <CircularGallery 
+          bend={1}
+          borderRadius={0.05}
+          scrollSpeed={2}
+          scrollEase={0.05}
+        />
+      </div>
+
+      {/* Academic Credentials Section */}
+      <div 
+        ref={academicRef}
+        className={`mt-24 space-y-10 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+      >
+        <Shuffle
+          text="Academic Credentials"
+          tag="h2"
+          className="text-3xl font-bold tracking-tight sm:text-4xl"
+          shuffleDirection="right"
+          duration={0.35}
+          animationMode="evenodd"
+          shuffleTimes={1}
+          ease="power3.out"
+          stagger={0.03}
+          threshold={0.1}
+          triggerOnce={false}
+          triggerOnHover
+          respectReducedMotion={true}
+          loop={false}
+          loopDelay={0}
+        />
+        
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* Arellano University Card */}
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-6 sm:p-8 hover:border-accent/50">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-start gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                  <GraduationCap className="h-7 w-7 text-accent" />
+                </div>
+                <div className="space-y-1 flex-1">
+                  <h3 className="text-lg font-bold text-foreground">Arellano University</h3>
+                  <p className="text-sm text-muted-foreground">Jose Abad Santos Campus</p>
+                  <p className="text-xs font-medium text-accent">2022 - 2024</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">With High Honors</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">Class Rank 1</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">Leadership Award</p>
+                  <p className="text-xs text-muted-foreground">STEM Club</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">Journalist of the Year</p>
+                </div>
+              </div>
+              
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
+                  <span className="text-muted-foreground">Rank 15 - Overall Campus</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
+                  <span className="text-muted-foreground">The Standard - Outstanding Female Editor</span>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+                <Image
+                  src="/AU.png"
+                  alt="Arellano University Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Pasay City West High School Card */}
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-6 sm:p-8 hover:border-accent/50">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-start gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                  <GraduationCap className="h-7 w-7 text-accent" />
+                </div>
+                <div className="space-y-1 flex-1">
+                  <h3 className="text-lg font-bold text-foreground">Pasay City West High School</h3>
+                  <p className="text-xs font-medium text-accent">2017 - 2020</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">With High Honors</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">Best In Mandarin</p>
+                  <p className="text-xs text-muted-foreground">FOLA</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">Math Olympics</p>
+                  <p className="text-xs text-muted-foreground">2nd Place</p>
+                </div>
+                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
+                  <Award className="h-4 w-4 text-accent mb-1" />
+                  <p className="text-sm font-semibold">MTAP Representative</p>
+                </div>
+              </div>
+              
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
+                  <span className="text-muted-foreground">PCWHS Journalism - News Writer</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
+                  <span className="text-muted-foreground">Robotics Participant</span>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+                <Image
+                  src="/PCWHS.png"
+                  alt="PCWHS Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
