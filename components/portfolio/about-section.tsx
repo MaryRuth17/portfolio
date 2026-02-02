@@ -97,10 +97,10 @@ export function AboutSection() {
                 sensitivity={200}
                 sendToBackOnClick={true}
                 cards={[
-                  "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
-                  "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
-                  "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-                  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
+                  "/profile1.JPEG",
+                  "/profile2.JPG",
+                  "/profile3.png",
+                  "/profile4.JPEG"
                 ].map((src, i) => (
                   <img 
                     key={i} 
@@ -331,7 +331,7 @@ export function AboutSection() {
           <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
             <div className="relative w-full h-64 overflow-hidden rounded-xl">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                src="/public-relations.jpg"
                 alt="Team collaboration"
                 className="w-full h-full object-cover"
               />
@@ -345,7 +345,7 @@ export function AboutSection() {
           <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
             <div className="relative w-full h-64 overflow-hidden rounded-xl">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                src="/journalism.jpg"
                 alt="Team collaboration"
                 className="w-full h-full object-cover"
               />
@@ -416,7 +416,7 @@ export function AboutSection() {
           <div className="smooth-card glow-effect rounded-2xl bg-card p-6 sm:p-8 flex items-center justify-center">
             <div className="relative w-full h-64 overflow-hidden rounded-xl">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format"
+                src="/student-leadership.jpg"
                 alt="Student leadership"
                 className="w-full h-full object-cover"
               />
