@@ -88,20 +88,20 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
                 Developing code. Securing data. Communicating value. I'm a tech student exploring the intersection of software engineering and digital defense, with a unique eye for public relations and community engagement.
           </p>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <MapPin className="h-3.5 w-3.5" />
+              <MapPin className="h-4 w-4" />
               Manila City, PH
             </span>
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <Briefcase className="h-3.5 w-3.5" />
+              <Briefcase className="h-4 w-4" />
               Open to work
             </span>
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <GraduationCap className="h-3.5 w-3.5" />
+              <GraduationCap className="h-4 w-4" />
               CPE @ PUP Manila
             </span>
           </div>
@@ -210,11 +210,11 @@ export function AboutSection() {
         <div className="space-y-8">
           {/* Bio Card */}
           <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 sm:p-6 h-full flex flex-col justify-center">
-            <div className="space-y-3 text-muted-foreground">
-              <p className="text-sm leading-relaxed">
+            <div className="space-y-4 text-muted-foreground">
+              <p className="text-base leading-relaxed">
                 {"Mary Ruth Relator is a Computer Engineering student at PUP Manila, specializing in software development and cybersecurity. A dedicated builder and problem-solver, she actively participates in hackathons and technical projects, focusing on creating secure, scalable applications."}
               </p>
-              <p className="text-sm leading-relaxed">
+              <p className="text-base leading-relaxed">
                 {"Beyond the codebase, she is a prominent student leader who has held executive roles across eight organizations including VP for Business Development and Chief Public Relations Officer. She uniquely bridges the gap between engineering and industry, leveraging her technical foundation to lead partnerships and manage stakeholder interests for major tech events."}
               </p>
             </div>
@@ -232,7 +232,7 @@ export function AboutSection() {
           <Shuffle
             text="Education"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
@@ -312,7 +312,7 @@ export function AboutSection() {
           <Shuffle
             text="Other Skills"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
@@ -513,7 +513,7 @@ export function AboutSection() {
           <Shuffle
             text="Academic Credentials"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
