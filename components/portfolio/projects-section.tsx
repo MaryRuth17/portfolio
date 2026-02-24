@@ -63,8 +63,8 @@ export function ProjectsSection() {
   const { ref: certGridRef, isRevealed: certGridRevealed } = useScrollReveal({ triggerOnce: false });
 
   return (
-    <section className="py-6 lg:py-10">
-      <div className="space-y-12">
+    <section className="py-6 lg:py-8">
+      <div className="space-y-10">
         {/* Header */}
         <div 
           ref={headerRef}
@@ -171,7 +171,7 @@ export function ProjectsSection() {
         <div>
           <div 
           ref={certHeaderRef}
-          className={`space-y-3 mb-8 scroll-reveal ${certHeaderRevealed ? 'revealed' : ''}`}
+          className={`space-y-3 mb-6 scroll-reveal ${certHeaderRevealed ? 'revealed' : ''}`}
           style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
           <Shuffle
@@ -191,7 +191,7 @@ export function ProjectsSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Professional certifications and achievements that demonstrate my expertise and commitment to continuous learning.
           </p>
         </div>

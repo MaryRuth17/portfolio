@@ -51,11 +51,11 @@ export function ExperienceSection() {
   });
 
   return (
-    <section className="py-6 lg:py-10">
+    <section className="py-6 lg:py-8">
       {/* Section Header */}
       <div 
         ref={headerRef}
-        className={`mb-8 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`mb-6 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <Shuffle
@@ -75,7 +75,7 @@ export function ExperienceSection() {
           loop={false}
           loopDelay={0}
         />
-        <p className="text-base text-foreground/70 mt-1 max-w-2xl">
+        <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
           My professional journey and the roles that shaped my career.
         </p>
       </div>

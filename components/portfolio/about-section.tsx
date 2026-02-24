@@ -63,11 +63,11 @@ export function AboutSection() {
   });
 
   return (
-    <section className="py-6 lg:py-10">
+    <section className="py-6 lg:py-8">
       {/* Section Header*/}
       <div 
         ref={headerRef}
-        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <div className="space-y-3 flex-1">
@@ -143,7 +143,7 @@ export function AboutSection() {
       </div>
 
       <div 
-        className={`grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-10 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         {/* Left column - Personal info */}
@@ -225,10 +225,10 @@ export function AboutSection() {
       {/* Education Section */}
       <div 
         ref={educationRef}
-        className={`mt-8 mb-4 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Education"
             tag="h2"
@@ -246,7 +246,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             This outlines my educational background and the academic path I have followed to gain the knowledge and skills I have today.
           </p>
         </div>
@@ -303,10 +303,10 @@ export function AboutSection() {
       {/* Other Skills Section */}
       <div 
         ref={otherSkillsRef}
-        className={`mt-8 mb-4 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Other Skills"
             tag="h2"
@@ -324,7 +324,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Beyond technical expertise, I bring a diverse range of skills from journalism, public relations, and student leadership that enhance my professional versatility.
           </p>
         </div>
@@ -463,7 +463,7 @@ export function AboutSection() {
       </div>
 
       {/* Circular Gallery Section */}
-      <div className="mt-4 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
+      <div className="mt-10 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
         <CircularGallery 
           bend={1}
           borderRadius={0.05}
@@ -475,10 +475,10 @@ export function AboutSection() {
       {/* Academic Credentials Section */}
       <div 
         ref={academicRef}
-        className={`mt-8 mb-4 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Academic Credentials"
             tag="h2"
@@ -496,7 +496,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Recognition of academic achievements and leadership excellence throughout my educational journey.
           </p>
         </div>

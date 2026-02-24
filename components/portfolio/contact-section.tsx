@@ -61,7 +61,7 @@ export function ContactSection() {
   const { ref: leftRef, isRevealed: leftRevealed } = useScrollReveal();
 
   return (
-    <section className="py-12 lg:py-20">
+    <section className="py-6 lg:py-8">
       <div className="space-y-8">
         <div 
           ref={leftRef}
