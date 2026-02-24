@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles, Linkedin } from "lucide-react";
+import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles, Linkedin, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -56,6 +56,39 @@ const certifications = [
   },
 ];
 
+const experience = [
+  {
+    period: "2024 — Present",
+    title: "Senior Frontend Engineer",
+    company: "TechCorp",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200&auto=format",
+    description:
+      "Leading the frontend architecture for the main product, implementing design systems, and mentoring junior developers. Focus on performance optimization and accessibility.",
+    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+  },
+  {
+    period: "2022 — 2024",
+    title: "Full-Stack Developer",
+    company: "StartupXYZ",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?q=80&w=200&auto=format",
+    description:
+      "Built and maintained multiple web applications from scratch, working closely with design and product teams to deliver pixel-perfect interfaces.",
+    technologies: ["Node.js", "React", "PostgreSQL", "AWS"],
+  },
+  {
+    period: "2020 — 2022",
+    title: "Frontend Developer",
+    company: "DigitalAgency",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=200&auto=format",
+    description:
+      "Developed responsive websites and web applications for various clients, focusing on clean code and modern web standards.",
+    technologies: ["JavaScript", "Vue.js", "SCSS", "WordPress"],
+  },
+];
+
 // Total slides = real projects + 1 "More to Come" card
 const TOTAL_SLIDES = featuredProjects.length + 1;
 
@@ -65,6 +98,16 @@ export function ProjectsSection() {
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certHeaderRef, isRevealed: certHeaderRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certGridRef, isRevealed: certGridRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: expHeaderRef, isRevealed: expHeaderRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.05,
+    rootMargin: "200px 0px -100px 0px",
+  });
+  const { ref: expContentRef, isRevealed: expContentRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.02,
+    rootMargin: "200px 0px -50px 0px",
+  });
 
   const goPrev = () => setCurrentIndex((i) => (i - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
   const goNext = () => setCurrentIndex((i) => (i + 1) % TOTAL_SLIDES);
@@ -241,6 +284,97 @@ export function ProjectsSection() {
               Next
               <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div
+          ref={expHeaderRef}
+          className={`scroll-reveal ${expHeaderRevealed ? 'revealed' : ''}`}
+          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
+        >
+          <div className="space-y-3 mb-6">
+            <Shuffle
+              text="Experience"
+              tag="h2"
+              className="text-2xl font-bold tracking-tight sm:text-3xl"
+              shuffleDirection="right"
+              duration={0.35}
+              animationMode="evenodd"
+              shuffleTimes={1}
+              ease="power3.out"
+              stagger={0.03}
+              threshold={0.1}
+              triggerOnce={false}
+              triggerOnHover
+              respectReducedMotion={true}
+              loop={false}
+              loopDelay={0}
+            />
+            <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
+              My professional journey and the roles that shaped my career.
+            </p>
+          </div>
+          <div
+            ref={expContentRef}
+            className={`space-y-4 scroll-reveal ${expContentRevealed ? 'revealed' : ''}`}
+            style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
+          >
+            {experience.map((job, index) => (
+              <div
+                key={index}
+                className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Top accent bar */}
+                <div className="h-1 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+                <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:gap-6 p-4 sm:p-5">
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-right sm:pt-1">
+                    {job.period}
+                  </span>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      {job.logo && (
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50">
+                          <img
+                            src={job.logo}
+                            alt={`${job.company} logo`}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <h3 className="text-base font-bold text-foreground leading-tight">
+                          <a
+                            href={job.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 transition-colors hover:text-accent"
+                          >
+                            {job.title} · {job.company}
+                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </a>
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-sm leading-relaxed text-foreground/80">
+                      {job.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {job.technologies.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
