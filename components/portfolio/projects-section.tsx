@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles, Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -33,25 +33,26 @@ const featuredProjects = [
 
 const certifications = [
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    link: "https://example.com/cert1",
-    credentialId: "AWS-12345",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    date: "2026",
+    link: "https://www.credly.com/badges/e617c446-8a7c-4c02-868d-1c960cd9cf16/public_url",
+    credentialId: "",
   },
   {
-    title: "Professional Scrum Master I",
-    issuer: "Scrum.org",
-    date: "2023",
-    link: "https://example.com/cert2",
-    credentialId: "PSM-67890",
+    title: "Machine Learning, Artificial Intelligence (AI), and Cybersecurity",
+    issuer: "Coursera",
+    date: "2026",
+    link: "https://www.coursera.org/account/accomplishments/badge/Rs3kDOjJSxCN5AzoyQsQCA",
+    credentialId: "Rs3kDOjJSxCN5AzoyQsQCA",
   },
   {
-    title: "Google Cloud Professional Developer",
-    issuer: "Google Cloud",
-    date: "2023",
-    link: "https://example.com/cert3",
-    credentialId: "GCP-54321",
+    title: "See All Certifications",
+    issuer: "View my full list of certifications on LinkedIn",
+    date: "",
+    link: "https://www.linkedin.com/in/maryruthprelator/details/certifications/",
+    credentialId: "",
+    isLinkedIn: true,
   },
 ];
 
@@ -287,34 +288,55 @@ export function ProjectsSection() {
               >
                 {/* Top accent bar */}
                 <div className="h-0.5 w-full bg-gradient-to-r from-accent via-accent/50 to-transparent shrink-0" />
-                <div className="flex flex-1 flex-col p-4">
-                  <div className="flex items-start gap-2.5 mb-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
-                      <Award className="h-4 w-4 text-accent" />
+                {(cert as any).isLinkedIn ? (
+                  /* LinkedIn "See All" card */
+                  <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                      <Linkedin className="h-6 w-6 text-accent" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-base font-bold text-foreground leading-tight mb-0.5 group-hover:text-accent transition-colors duration-300">
+                    <div className="space-y-1.5">
+                      <h4 className="text-base font-bold text-foreground leading-tight group-hover:text-accent transition-colors duration-300">
                         {cert.title}
                       </h4>
-                      <p className="text-xs text-muted-foreground font-medium">
+                      <p className="text-xs text-muted-foreground leading-relaxed">
                         {cert.issuer}
                       </p>
                     </div>
-                  </div>
-                  <div className="mt-auto pt-3 space-y-2 border-t border-border/30">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">Issued</span>
-                      <span className="text-xs font-semibold text-foreground">{cert.date}</span>
-                    </div>
-                    <div className="text-xs text-muted-foreground font-mono bg-muted/30 rounded-md px-2 py-1">
-                      ID: {cert.credentialId}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
-                      <span>View Certificate</span>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-accent mt-auto">
+                      <span>View on LinkedIn</span>
                       <ExternalLinkIcon className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex flex-1 flex-col p-4">
+                    <div className="flex items-start gap-2.5 mb-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                        <Award className="h-4 w-4 text-accent" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-base font-bold text-foreground leading-tight mb-0.5 group-hover:text-accent transition-colors duration-300">
+                          {cert.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground font-medium">
+                          {cert.issuer}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-auto pt-3 space-y-2 border-t border-border/30">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">Issued</span>
+                        <span className="text-xs font-semibold text-foreground">{cert.date}</span>
+                      </div>
+                      <div className="text-xs text-muted-foreground font-mono bg-muted/30 rounded-md px-2 py-1">
+                        ID: {cert.credentialId}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
+                        <span>View Certificate</span>
+                        <ExternalLinkIcon className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </a>
             ))}
           </div>
