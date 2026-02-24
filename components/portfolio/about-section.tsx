@@ -505,7 +505,7 @@ export function AboutSection() {
           {/* Arellano University */}
           <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
             <div className="p-5 space-y-5">
               {/* Header */}
               <div className="flex items-start justify-between gap-3">
@@ -567,7 +567,7 @@ export function AboutSection() {
           {/* Pasay City West High School */}
           <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="h-1.5 w-full bg-gradient-to-r from-violet-600 via-violet-500/60 to-transparent" />
             <div className="p-5 space-y-5">
               {/* Header */}
               <div className="flex items-start justify-between gap-3">
