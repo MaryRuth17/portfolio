@@ -21,9 +21,9 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
-          <div className="space-y-8 text-left">
+          <div className="space-y-8 text-left lg:pl-8">
             {/* Greeting */}
             <div className="space-y-4 animate-fade-in-up" style={{animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards"}}>
               <p className="text-lg sm:text-xl text-muted-foreground font-medium">

@@ -41,25 +41,40 @@ const cybersec = [
 
 export function AboutSection() {
   const [activeTab, setActiveTab] = useState<'Public Relations' | 'Journalism' | 'Student Leadership'>('Public Relations');
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: leftRef, isRevealed: leftRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: rightRef, isRevealed: rightRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: educationRef, isRevealed: educationRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: otherSkillsRef, isRevealed: otherSkillsRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ 
+    triggerOnce: false, 
+    threshold: 0.05, 
+    rootMargin: "200px 0px -100px 0px" 
+  });
+  const { ref: educationRef, isRevealed: educationRevealed } = useScrollReveal({ 
+    triggerOnce: false, 
+    threshold: 0.05, 
+    rootMargin: "200px 0px -100px 0px" 
+  });
+  const { ref: otherSkillsRef, isRevealed: otherSkillsRevealed } = useScrollReveal({ 
+    triggerOnce: false, 
+    threshold: 0.05, 
+    rootMargin: "200px 0px -100px 0px" 
+  });
+  const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ 
+    triggerOnce: false, 
+    threshold: 0.05, 
+    rootMargin: "200px 0px -100px 0px" 
+  });
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-12 lg:py-20">
       {/* Section Header*/}
       <div 
         ref={headerRef}
-        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8 mb-16 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-12 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-        <div className="space-y-4 flex-1">
+        <div className="space-y-3 flex-1">
           <Shuffle
             text="About Me"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
@@ -73,28 +88,28 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-muted-foreground max-w-2xl">
-                Developing code. Securing data. Communicating value. I’m a tech student exploring the intersection of software engineering and digital defense, with a unique eye for public relations and community engagement.
+          <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                Developing code. Securing data. Communicating value. I'm a tech student exploring the intersection of software engineering and digital defense, with a unique eye for public relations and community engagement.
           </p>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <MapPin className="h-4 w-4" />
+              <MapPin className="h-3.5 w-3.5" />
               Manila City, PH
             </span>
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <Briefcase className="h-4 w-4" />
+              <Briefcase className="h-3.5 w-3.5" />
               Open to work
             </span>
             <span className="flex items-center gap-1.5 transition-colors hover:text-foreground">
-              <GraduationCap className="h-4 w-4" />
+              <GraduationCap className="h-3.5 w-3.5" />
               CPE @ PUP Manila
             </span>
           </div>
         </div>
         
           {/* Profile Picture*/}
-          <div className="relative group shrink-0 animate-slide-in-right">
-            <div className="overflow-hidden rounded-2xl w-72 h-72 sm:w-96 sm:h-96">
+          <div className="relative group shrink-0">
+            <div className="overflow-hidden rounded-2xl w-60 h-60 sm:w-72 sm:h-72">
               <Stack
                 randomRotation={false}
                 sensitivity={200}
@@ -127,12 +142,12 @@ export function AboutSection() {
         </div>
       </div>
 
-      <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+      <div 
+        className={`grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
+      >
         {/* Left column - Personal info */}
-        <div 
-          ref={leftRef}
-          className={`space-y-8 scroll-reveal-left ${leftRevealed ? 'revealed' : ''}`}
-        >
+        <div className="space-y-6">
 
           {/* Skills */}
           <div className="space-y-3">
@@ -192,17 +207,14 @@ export function AboutSection() {
         
 
         {/* Right column - Bio & Experience */}
-        <div 
-          ref={rightRef}
-          className={`space-y-12 scroll-reveal-right ${rightRevealed ? 'revealed' : ''}`}
-        >
+        <div className="space-y-8">
           {/* Bio Card */}
-          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-6 sm:p-8">
-            <div className="space-y-4 text-muted-foreground">
-              <p className="text-lg leading-relaxed">
+          <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 sm:p-6 h-full flex flex-col justify-center">
+            <div className="space-y-3 text-muted-foreground">
+              <p className="text-sm leading-relaxed">
                 {"Mary Ruth Relator is a Computer Engineering student at PUP Manila, specializing in software development and cybersecurity. A dedicated builder and problem-solver, she actively participates in hackathons and technical projects, focusing on creating secure, scalable applications."}
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-sm leading-relaxed">
                 {"Beyond the codebase, she is a prominent student leader who has held executive roles across eight organizations including VP for Business Development and Chief Public Relations Officer. She uniquely bridges the gap between engineering and industry, leveraging her technical foundation to lead partnerships and manage stakeholder interests for major tech events."}
               </p>
             </div>
