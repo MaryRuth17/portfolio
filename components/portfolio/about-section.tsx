@@ -366,127 +366,98 @@ export function AboutSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="max-w-[900px] mx-auto px-4">
-          {/* Organizational - Public Relations Card */}
+        <div className="max-w-[780px] mx-auto px-4">
+          {/* Public Relations Card */}
           {activeTab === 'Public Relations' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-500">
-              <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 h-[340px] flex flex-col">
-                <div className="flex items-start gap-3 flex-1">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                    <Award className="h-5 w-5 text-accent" />
-                  </div>
-                  <div className="space-y-2 flex-1">
-                    <h3 className="text-lg font-semibold">Public Relations / Partnerships</h3>
-                    <p className="text-muted-foreground leading-relaxed text-xs">
-                      Since my freshman year, I have served as a core member of the Partnerships and Public Relations team. 
-                      In this role, I have successfully spearheaded the organization of over 7 major tech events. To date, 
-                      I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {["Communication", "Event Planning", "Public Relations", "Media Partnerships", "Negotiation & Persuasion" ].map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant="secondary"
-                          className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative w-full h-[340px] overflow-hidden rounded-2xl group/image shadow-[0_0_15px_rgba(236,72,153,0.3)] hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] transition-shadow duration-500">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+              <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/public-relations.jpg"
-                  alt="Team collaboration"
-                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-110 group-hover/image:brightness-110"
+                  alt="Public Relations"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent group-hover/image:from-card/60 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                <div className="absolute bottom-3 left-4">
+                  <h3 className="text-base font-bold text-foreground">Public Relations / Partnerships</h3>
+                </div>
+              </div>
+              <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Since my freshman year, I have served as a core member of the Partnerships and Public Relations team.
+                  In this role, I have successfully spearheaded the organization of over 7 major tech events. To date,
+                  I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Communication", "Event Planning", "Public Relations", "Media Partnerships", "Negotiation & Persuasion"].map((skill) => (
+                    <Badge key={skill} variant="secondary" className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
           )}
 
-          {/* Competitive - Journalism Card */}
+          {/* Journalism Card */}
           {activeTab === 'Journalism' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-500">
-              <div className="relative w-full h-[340px] overflow-hidden rounded-2xl group/image shadow-[0_0_15px_rgba(236,72,153,0.3)] hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] transition-shadow duration-500">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+              <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/journalism.jpg"
-                  alt="Team collaboration"
-                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-110 group-hover/image:brightness-110"
+                  alt="Journalism"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent group-hover/image:from-card/60 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                <div className="absolute bottom-3 left-4">
+                  <h3 className="text-base font-bold text-foreground">Journalism</h3>
+                </div>
               </div>
-              <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 h-[340px] flex flex-col">
-                <div className="flex items-start gap-3 flex-1">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                    <Award className="h-5 w-5 text-accent" />
-                  </div>
-                  <div className="space-y-2 flex-1">
-                    <h3 className="text-lg font-semibold">Journalism</h3>
-                    <p className="text-muted-foreground leading-relaxed text-xs">
-                      A dedicated journalist since primary school, I have contributed to three distinct 
-                      school publications and competed at the Regional Schools Press Conference (RSPC). 
-                      My commitment to the craft culminated in graduating with the Journalist of the Year 
-                      award in high school, reflecting a long-standing expertise in storytelling, technical 
-                      writing, and competitive editorial work.
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {["Communication", "News Writing", "Literary", "Blogs", "Media", "Opinion Articles"].map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant="secondary"
-                          className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
+              <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  A dedicated journalist since primary school, I have contributed to three distinct school publications
+                  and competed at the Regional Schools Press Conference (RSPC). My commitment to the craft culminated
+                  in graduating with the Journalist of the Year award in high school, reflecting a long-standing
+                  expertise in storytelling, technical writing, and competitive editorial work.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Communication", "News Writing", "Literary", "Blogs", "Media", "Opinion Articles"].map((skill) => (
+                    <Badge key={skill} variant="secondary" className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105">
+                      {skill}
+                    </Badge>
+                  ))}
                 </div>
               </div>
             </div>
           )}
 
-          {/* Professional - Student Leadership Card */}
+          {/* Student Leadership Card */}
           {activeTab === 'Student Leadership' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-500">
-              <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 h-[340px] flex flex-col">
-                <div className="flex items-start gap-3 flex-1">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                    <Award className="h-5 w-5 text-accent" />
-                  </div>
-                  <div className="space-y-2 flex-1">
-                    <h3 className="text-lg font-semibold">Student Leadership</h3>
-                    <p className="text-muted-foreground leading-relaxed text-xs">
-                      I am a versatile student leader with a decade of experience across four institutions, 
-                      holding key executive roles including President, Auditor, and PIO. Proven track record 
-                      in organizational governance and community service through extensive non-profit volunteerism. 
-                      Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral 
-                      oversight and student body administration
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {["Organizational Governance & Policy", "Leadership", "Stakeholder Management", "Finance and Auditing", "Operations Management", "Youth Governance" ].map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant="secondary"
-                          className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative w-full h-[340px] overflow-hidden rounded-2xl group/image shadow-[0_0_15px_rgba(236,72,153,0.3)] hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] transition-shadow duration-500">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+              <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/student-leadership.jpg"
-                  alt="Student leadership"
-                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-110 group-hover/image:brightness-110"
+                  alt="Student Leadership"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent group-hover/image:from-card/60 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                <div className="absolute bottom-3 left-4">
+                  <h3 className="text-base font-bold text-foreground">Student Leadership</h3>
+                </div>
+              </div>
+              <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  I am a versatile student leader with a decade of experience across four institutions,
+                  holding key executive roles including President, Auditor, and PIO.
+                  Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral
+                  oversight and student body administration.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Organizational Governance & Policy", "Leadership", "Finance and Auditing", "Operations Management", "Youth Governance"].map((skill) => (
+                    <Badge key={skill} variant="secondary" className="rounded-full px-2 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
           )}
