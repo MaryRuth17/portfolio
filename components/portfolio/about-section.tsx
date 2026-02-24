@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, GraduationCap, Code2, Award } from "lucide-react";
+import { MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Shuffle from "@/components/ui/Shuffle";
 import Stack from "@/components/ui/Stack";
@@ -59,15 +59,15 @@ export function AboutSection() {
   const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "0px 0px -100px 0px" 
+    rootMargin: "200px 0px -50px 0px" 
   });
 
   return (
-    <section className="py-12 lg:py-20">
+    <section className="py-6 lg:py-10">
       {/* Section Header*/}
       <div 
         ref={headerRef}
-        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-12 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <div className="space-y-3 flex-1">
@@ -88,7 +88,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed">
                 Developing code. Securing data. Communicating value. I'm a tech student exploring the intersection of software engineering and digital defense, with a unique eye for public relations and community engagement.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -210,7 +210,7 @@ export function AboutSection() {
         <div className="space-y-8">
           {/* Bio Card */}
           <div className="smooth-card rounded-2xl border border-border/50 bg-card p-5 sm:p-6 h-full flex flex-col justify-center">
-            <div className="space-y-4 text-muted-foreground">
+            <div className="space-y-4 text-foreground/70">
               <p className="text-base leading-relaxed">
                 {"Mary Ruth Relator is a Computer Engineering student at PUP Manila, specializing in software development and cybersecurity. A dedicated builder and problem-solver, she actively participates in hackathons and technical projects, focusing on creating secure, scalable applications."}
               </p>
@@ -225,10 +225,10 @@ export function AboutSection() {
       {/* Education Section */}
       <div 
         ref={educationRef}
-        className={`mt-16 mb-12 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+        className={`mt-8 mb-4 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-        <div className="mb-8">
+          <div className="mb-4">
           <Shuffle
             text="Education"
             tag="h2"
@@ -246,69 +246,67 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-muted-foreground mt-1">
+          <p className="text-base text-foreground/70 mt-1">
             This outlines my educational background and the academic path I have followed to gain the knowledge and skills I have today.
           </p>
         </div>
         
         <div className="space-y-4">
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-4 sm:p-6">
-            <div className="flex items-start gap-3 relative z-10" 
-            >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                <GraduationCap className="h-5 w-5 text-accent" 
-                />
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
+            <div className="h-1.5 w-full bg-gradient-to-r from-red-600 via-red-500/60 to-transparent" />
+            <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-500/10 border border-red-500/20">
+                  <GraduationCap className="h-5 w-5 text-red-500" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground leading-tight">Bachelor of Science in Computer Engineering</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Polytechnic University of the Philippines – Manila</p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <h3 className="text-lg font-semibold">Bachelor of Science in Computer Engineering</h3>
-                <p className="text-sm text-muted-foreground">Polytechnic University of the Philippines - Manila</p>
-                <p className="text-xs text-muted-foreground">2024 - Present</p>
-              </div>
+              <span className="shrink-0 text-xs font-medium text-red-500 bg-red-500/10 border border-red-500/20 rounded-full px-2.5 py-1">
+                2024 – Present
+              </span>
             </div>
-            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-                <Image
-                  src="/PUP.png"
-                  alt="PUP Logo"
-                  fill
-                  className="object-contain"
-                />
+            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+              <div className="relative w-100 h-100 opacity-20">
+                <Image src="/PUP.png" alt="PUP Logo" fill className="object-contain" />
               </div>
             </div>
           </div>
 
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-4 sm:p-6">
-          <div className="flex items-start gap-3 relative z-10">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-              <GraduationCap className="h-5 w-5 text-accent" />
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
+            <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
+            <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20">
+                  <GraduationCap className="h-5 w-5 text-blue-500" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground leading-tight">STEM – Science, Technology, Engineering, and Mathematics</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Arellano University – Jose Abad Santos Campus</p>
+                </div>
+              </div>
+              <span className="shrink-0 text-xs font-medium text-blue-500 bg-blue-500/10 border border-blue-500/20 rounded-full px-2.5 py-1">
+                2022 – 2024
+              </span>
             </div>
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold">STEM - Science, Technology, Engineering, and Mathematics</h3>
-              <p className="text-sm text-muted-foreground">Arellano University - Jose Abad Santos Campus</p>
-              <p className="text-xs text-muted-foreground">2022 - 2024</p>
+            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+              <div className="relative w-100 h-100 opacity-20">
+                <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
+              </div>
             </div>
           </div>
-          <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-              <Image
-                src="/AU.png"
-                alt="Arellano University Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
         </div>
       </div>
 
       {/* Other Skills Section */}
       <div 
         ref={otherSkillsRef}
-        className={`mt-16 mb-12 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+        className={`mt-8 mb-4 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-        <div className="mb-8">
+          <div className="mb-4">
           <Shuffle
             text="Other Skills"
             tag="h2"
@@ -326,7 +324,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-muted-foreground mt-1">
+          <p className="text-base text-foreground/70 mt-1">
             Beyond technical expertise, I bring a diverse range of skills from journalism, public relations, and student leadership that enhance my professional versatility.
           </p>
         </div>
@@ -382,7 +380,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-foreground/70 leading-relaxed">
                   Since my freshman year, I have served as a core member of the Partnerships and Public Relations team.
                   In this role, I have successfully spearheaded the organization of over 7 major tech events. To date,
                   I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
@@ -413,7 +411,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-foreground/70 leading-relaxed">
                   A dedicated journalist since primary school, I have contributed to three distinct school publications
                   and competed at the Regional Schools Press Conference (RSPC). My commitment to the craft culminated
                   in graduating with the Journalist of the Year award in high school, reflecting a long-standing
@@ -445,7 +443,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-foreground/70 leading-relaxed">
                   I am a versatile student leader with a decade of experience across four institutions,
                   holding key executive roles including President, Auditor, and PIO.
                   Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral
@@ -465,7 +463,7 @@ export function AboutSection() {
       </div>
 
       {/* Circular Gallery Section */}
-      <div className="mt-8 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
+      <div className="mt-4 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
         <CircularGallery 
           bend={1}
           borderRadius={0.05}
@@ -477,10 +475,10 @@ export function AboutSection() {
       {/* Academic Credentials Section */}
       <div 
         ref={academicRef}
-        className={`mt-16 mb-12 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+        className={`mt-8 mb-4 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-        <div className="mb-8">
+          <div className="mb-4">
           <Shuffle
             text="Academic Credentials"
             tag="h2"
@@ -498,94 +496,134 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-muted-foreground mt-1">
+          <p className="text-base text-foreground/70 mt-1">
             Recognition of academic achievements and leadership excellence throughout my educational journey.
           </p>
         </div>
         
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Arellano University */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-5 hover:border-accent/50">
-              <div className="space-y-4 relative z-10">
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+            {/* Top accent bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="p-5 space-y-5">
+              {/* Header */}
+              <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
                     <GraduationCap className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-foreground">Arellano University</h3>
-                    <p className="text-xs text-muted-foreground">Jose Abad Santos Campus · 2022 – 2024</p>
+                    <h3 className="text-base font-bold text-foreground leading-tight">Arellano University</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">Jose Abad Santos Campus</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {[
-                    { label: 'With High Honors' },
-                    { label: 'Class Rank 1' },
-                    { label: 'Leadership Award', sub: 'STEM Club' },
-                    { label: 'Journalist of the Year' },
-                  ].map(({ label, sub }) => (
-                    <div key={label} className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-0.5">
-                      <Award className="h-3.5 w-3.5 text-accent" />
-                      <p className="text-xs font-semibold leading-tight">{label}</p>
-                      {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-1">
-                  {['Rank 15 · Overall Campus', 'The Standard · Outstanding Female Editor'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-xs">
-                      <div className="h-1.5 w-1.5 rounded-full bg-accent shrink-0"></div>
-                      <span className="text-muted-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
+                <span className="shrink-0 text-xs font-medium text-accent bg-accent/10 border border-accent/20 rounded-full px-2.5 py-1">
+                  2022 – 2024
+                </span>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-                  <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
-                </div>
+
+              {/* Strand */}
+              <p className="text-xs text-muted-foreground border-l-2 border-accent/30 pl-3">
+                STEM – Science, Technology, Engineering, and Mathematics
+              </p>
+
+              {/* Awards grid */}
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { label: 'With High Honors', icon: '🏅' },
+                  { label: 'Class Rank 1', icon: '🥇' },
+                  { label: 'Leadership Award', sub: 'STEM Club', icon: '👑' },
+                  { label: 'Journalist of the Year', icon: '✍️' },
+                ].map(({ label, sub, icon }) => (
+                  <div key={label} className="flex items-start gap-2 rounded-xl bg-accent/5 border border-accent/10 px-3 py-2.5">
+                    <span className="text-base leading-none mt-0.5">{icon}</span>
+                    <div>
+                      <p className="text-xs font-semibold leading-tight text-foreground">{label}</p>
+                      {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
+                    </div>
+                  </div>
+                ))}
               </div>
+
+              {/* Extra details */}
+              <div className="flex flex-col gap-1.5 pt-1 border-t border-border/40">
+                {['Rank 15 · Overall Campus', 'The Standard · Outstanding Female Editor'].map((item) => (
+                  <div key={item} className="flex items-center gap-2 text-xs">
+                    <div className="h-1.5 w-1.5 rounded-full bg-accent/70 shrink-0" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Hover logo overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-card/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+              <div className="relative w-48 h-48 opacity-20">
+                <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
+              </div>
+            </div>
           </div>
 
           {/* Pasay City West High School */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-5 hover:border-accent/50">
-              <div className="space-y-4 relative z-10">
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+            {/* Top accent bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="p-5 space-y-5">
+              {/* Header */}
+              <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
                     <GraduationCap className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-foreground">Pasay City West High School</h3>
-                    <p className="text-xs text-muted-foreground">2017 – 2020</p>
+                    <h3 className="text-base font-bold text-foreground leading-tight">Pasay City West High School</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">Junior High School</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {[
-                    { label: 'With High Honors' },
-                    { label: 'Best In Mandarin', sub: 'FOLA' },
-                    { label: 'Math Olympics', sub: '2nd Place' },
-                    { label: 'MTAP Representative' },
-                  ].map(({ label, sub }) => (
-                    <div key={label} className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-0.5">
-                      <Award className="h-3.5 w-3.5 text-accent" />
-                      <p className="text-xs font-semibold leading-tight">{label}</p>
-                      {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-1">
-                  {['PCWHS Journalism · News Writer', 'Robotics Participant'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-xs">
-                      <div className="h-1.5 w-1.5 rounded-full bg-accent shrink-0"></div>
-                      <span className="text-muted-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
+                <span className="shrink-0 text-xs font-medium text-accent bg-accent/10 border border-accent/20 rounded-full px-2.5 py-1">
+                  2017 – 2020
+                </span>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-                  <Image src="/PCWHS.png" alt="PCWHS Logo" fill className="object-contain" />
-                </div>
+
+              {/* Track */}
+              <p className="text-xs text-muted-foreground border-l-2 border-accent/30 pl-3">
+                Foreign Language · Mathematics · Journalism & Broadcasting
+              </p>
+
+              {/* Awards grid */}
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { label: 'With High Honors', icon: '🏅' },
+                  { label: 'Best In Mandarin', sub: 'FOLA', icon: '🌟' },
+                  { label: 'Math Olympics', sub: '2nd Place', icon: '➕' },
+                  { label: 'MTAP Representative', icon: '📐' },
+                ].map(({ label, sub, icon }) => (
+                  <div key={label} className="flex items-start gap-2 rounded-xl bg-accent/5 border border-accent/10 px-3 py-2.5">
+                    <span className="text-base leading-none mt-0.5">{icon}</span>
+                    <div>
+                      <p className="text-xs font-semibold leading-tight text-foreground">{label}</p>
+                      {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
+                    </div>
+                  </div>
+                ))}
               </div>
+
+              {/* Extra details */}
+              <div className="flex flex-col gap-1.5 pt-1 border-t border-border/40">
+                {['PCWHS Journalism · News Writer', 'Robotics Participant'].map((item) => (
+                  <div key={item} className="flex items-center gap-2 text-xs">
+                    <div className="h-1.5 w-1.5 rounded-full bg-accent/70 shrink-0" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Hover logo overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-card/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+              <div className="relative w-48 h-48 opacity-20">
+                <Image src="/PCWHS.png" alt="PCWHS Logo" fill className="object-contain" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
