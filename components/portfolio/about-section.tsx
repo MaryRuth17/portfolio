@@ -533,118 +533,88 @@ export function AboutSection() {
         </div>
         
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Arellano University Card */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-6 sm:p-8 hover:border-accent/50">
-            <div className="space-y-4 relative z-10">
-              <div className="flex items-start gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
-                  <GraduationCap className="h-7 w-7 text-accent" />
+          {/* Arellano University */}
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-5 hover:border-accent/50">
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                    <GraduationCap className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-foreground">Arellano University</h3>
+                    <p className="text-xs text-muted-foreground">Jose Abad Santos Campus · 2022 – 2024</p>
+                  </div>
                 </div>
-                <div className="space-y-1 flex-1">
-                  <h3 className="text-lg font-bold text-foreground">Arellano University</h3>
-                  <p className="text-sm text-muted-foreground">Jose Abad Santos Campus</p>
-                  <p className="text-xs font-medium text-accent">2022 - 2024</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {[
+                    { label: 'With High Honors' },
+                    { label: 'Class Rank 1' },
+                    { label: 'Leadership Award', sub: 'STEM Club' },
+                    { label: 'Journalist of the Year' },
+                  ].map(({ label, sub }) => (
+                    <div key={label} className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-0.5">
+                      <Award className="h-3.5 w-3.5 text-accent" />
+                      <p className="text-xs font-semibold leading-tight">{label}</p>
+                      {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
+                    </div>
+                  ))}
                 </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-3 space-y-1">
-                  <Award className="h-4 w-4 text-accent mb-1" />
-                  <p className="text-sm font-semibold">With High Honors</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">Class Rank 1</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">Leadership Award</p>
-                  <p className="text-xs text-muted-foreground">STEM Club</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">Journalist of the Year</p>
-                </div>
-              </div>
-              
-              <div className="space-y-1.5 pt-1">
-                <div className="flex items-center gap-2 text-xs">
-                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
-                  <span className="text-muted-foreground">Rank 15 - Overall Campus</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs">
-                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
-                  <span className="text-muted-foreground">The Standard - Outstanding Female Editor</span>
+                <div className="flex flex-col gap-1">
+                  {['Rank 15 · Overall Campus', 'The Standard · Outstanding Female Editor'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-xs">
+                      <div className="h-1.5 w-1.5 rounded-full bg-accent shrink-0"></div>
+                      <span className="text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-                <Image
-                  src="/AU.png"
-                  alt="Arellano University Logo"
-                  fill
-                  className="object-contain"
-                />
+              <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+                  <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
+                </div>
               </div>
-            </div>
           </div>
 
-          {/* Pasay City West High School Card */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-4 sm:p-6 hover:border-accent/50">
-            <div className="space-y-3 relative z-10">
-              <div className="flex items-start gap-3">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
-                  <GraduationCap className="h-6 w-6 text-accent" />
+          {/* Pasay City West High School */}
+          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-card via-card to-accent/5 p-5 hover:border-accent/50">
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20">
+                    <GraduationCap className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-foreground">Pasay City West High School</h3>
+                    <p className="text-xs text-muted-foreground">2017 – 2020</p>
+                  </div>
                 </div>
-                <div className="space-y-1 flex-1">
-                  <h3 className="text-base font-bold text-foreground">Pasay City West High School</h3>
-                  <p className="text-xs font-medium text-accent">2017 - 2020</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {[
+                    { label: 'With High Honors' },
+                    { label: 'Best In Mandarin', sub: 'FOLA' },
+                    { label: 'Math Olympics', sub: '2nd Place' },
+                    { label: 'MTAP Representative' },
+                  ].map(({ label, sub }) => (
+                    <div key={label} className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-0.5">
+                      <Award className="h-3.5 w-3.5 text-accent" />
+                      <p className="text-xs font-semibold leading-tight">{label}</p>
+                      {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
+                    </div>
+                  ))}
                 </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">With High Honors</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">Best In Mandarin</p>
-                  <p className="text-xs text-muted-foreground">FOLA</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">Math Olympics</p>
-                  <p className="text-xs text-muted-foreground">2nd Place</p>
-                </div>
-                <div className="rounded-lg bg-accent/5 border border-accent/10 p-2 space-y-1">
-                  <Award className="h-3.5 w-3.5 text-accent mb-0.5" />
-                  <p className="text-xs font-semibold">MTAP Representative</p>
-                </div>
-              </div>
-              
-              <div className="space-y-1.5 pt-1">
-                <div className="flex items-center gap-2 text-xs">
-                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
-                  <span className="text-muted-foreground">PCWHS Journalism - News Writer</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs">
-                  <div className="h-1.5 w-1.5 rounded-full bg-accent"></div>
-                  <span className="text-muted-foreground">Robotics Participant</span>
+                <div className="flex flex-col gap-1">
+                  {['PCWHS Journalism · News Writer', 'Robotics Participant'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-xs">
+                      <div className="h-1.5 w-1.5 rounded-full bg-accent shrink-0"></div>
+                      <span className="text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
-                <Image
-                  src="/PCWHS.png"
-                  alt="PCWHS Logo"
-                  fill
-                  className="object-contain"
-                />
+              <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="relative w-200 h-200 sm:w-200 sm:h-200 opacity-20">
+                  <Image src="/PCWHS.png" alt="PCWHS Logo" fill className="object-contain" />
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
