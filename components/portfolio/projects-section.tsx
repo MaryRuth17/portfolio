@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Github, Award, ExternalLinkIcon } from "lucide-react";
+import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -55,22 +55,27 @@ const certifications = [
   },
 ];
 
+// Total slides = real projects + 1 "More to Come" card
+const TOTAL_SLIDES = featuredProjects.length + 1;
+
 export function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ triggerOnce: false });
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certHeaderRef, isRevealed: certHeaderRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certGridRef, isRevealed: certGridRevealed } = useScrollReveal({ triggerOnce: false });
 
+  const goPrev = () => setCurrentIndex((i) => (i - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
+  const goNext = () => setCurrentIndex((i) => (i + 1) % TOTAL_SLIDES);
+
+  const isMoreToGo = currentIndex === featuredProjects.length;
+  const project = !isMoreToGo ? featuredProjects[currentIndex] : null;
+
   return (
     <section className="py-6 lg:py-8">
       <div className="space-y-10">
-        {/* Header */}
-        <div 
-          ref={headerRef}
-          className={`space-y-4 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
-          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
-        >
+        {/* Section Header */}
+        <div className="space-y-3">
           <Shuffle
             text="Featured Projects"
             tag="h2"
@@ -89,54 +94,84 @@ export function ProjectsSection() {
             loopDelay={0}
           />
           <p className="text-base text-foreground/70 max-w-2xl leading-relaxed">
-            {"Showcase of my most impactful projects that demonstrate creativity, technical skills, and problem-solving abilities."}
+            Showcase of my most impactful projects that demonstrate creativity, technical skills, and problem-solving abilities.
           </p>
         </div>
 
-        {/* Featured Projects - Enhanced 2-column layout */}
-        <div 
+        {/* Featured Projects — Carousel */}
+        <div
           ref={gridRef}
-          className={`grid gap-5 lg:grid-cols-2 scroll-reveal ${gridRevealed ? 'revealed' : ''}`}
+          className={`scroll-reveal ${gridRevealed ? 'revealed' : ''}`}
           style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
-          {featuredProjects.map((project, index) => {
-            return (
-              <article
-                key={project.title}
-                className="smooth-card glow-effect stagger-child group relative flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card hover:border-accent/40 hover:shadow-md hover:shadow-accent/10"
-                style={{ transitionDelay: `${index * 120}ms`, transition: 'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease' }}
-                onMouseEnter={() => setHoveredProject(project.title)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                {/* Project image */}
-                <div className={cn(
-                  "relative h-36 w-full overflow-hidden bg-gradient-to-br",
-                  project.gradient
-                )}>
-                  {project.image && (
+          {/* Slide */}
+          <div className="max-w-[780px] mx-auto">
+            {isMoreToGo ? (
+              /* ── More to Come card ── */
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                {/* Left placeholder — mirrors the image card */}
+                <div className="group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden border border-dashed border-accent/40 bg-accent/5 flex items-center justify-center transition-all duration-300 hover:border-accent hover:shadow-md hover:shadow-accent/10">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                    <Sparkles className="h-8 w-8 text-accent" />
+                  </div>
+                </div>
+
+                {/* Text — matches real project text panel */}
+                <div className="flex flex-1 flex-col justify-between gap-4 py-1 sm:py-3">
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Coming Next</p>
+                    <h3 className="text-2xl font-bold text-foreground leading-tight">More to Go</h3>
+                    <p className="text-sm leading-relaxed text-foreground/70">
+                      More projects are on the way. Stay tuned for upcoming builds, experiments, and collaborations.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["In Progress", "Coming Soon", "Stay Tuned"].map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ── Real project — image card + outside text ── */
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                {/* Image card — no text inside */}
+                <div
+                  className={cn(
+                    "group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-gradient-to-br shadow-md",
+                    project!.gradient
+                  )}
+                  onMouseEnter={() => setHoveredProject(project!.title)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  {project!.image && (
                     <div className="absolute inset-0">
-                      <Image 
-                        src={project.image} 
-                        alt={`${project.title} screenshot`}
+                      <Image
+                        src={project!.image}
+                        alt={`${project!.title} screenshot`}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="400px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
-                  {/* Bottom gradient */}
-                  <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent" />
-                  {/* Hover overlay — GitHub button */}
+                  {/* GitHub hover overlay */}
                   <div className={cn(
                     "absolute inset-0 flex items-center justify-center bg-background/75 backdrop-blur-sm transition-all duration-300",
-                    hoveredProject === project.title ? "opacity-100" : "opacity-0 pointer-events-none"
+                    hoveredProject === project!.title ? "opacity-100" : "opacity-0 pointer-events-none"
                   )}>
                     <a
-                      href={project.github}
+                      href={project!.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-xs font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl translate-y-2 group-hover:translate-y-0"
-                      aria-label={`View ${project.title} on GitHub`}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-xs font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      aria-label={`View ${project!.title} on GitHub`}
                     >
                       <Github className="h-3.5 w-3.5" />
                       View on GitHub
@@ -144,14 +179,15 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-1 flex-col p-4">
-                  <h3 className="text-base font-bold text-foreground leading-tight mb-1.5 transition-colors duration-300 group-hover:text-accent">{project.title}</h3>
-                  <p className="text-sm leading-relaxed text-foreground/80 flex-1">
-                    {project.description}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
+                {/* Text — outside the card, no background */}
+                <div className="flex flex-1 flex-col justify-between gap-4 py-1 sm:py-3">
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Featured Project</p>
+                    <h3 className="text-2xl font-bold text-foreground leading-tight">{project!.title}</h3>
+                    <p className="text-sm leading-relaxed text-foreground/70">{project!.description}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project!.technologies.map((tech) => (
                       <Badge
                         key={tech}
                         variant="secondary"
@@ -162,18 +198,58 @@ export function ProjectsSection() {
                     ))}
                   </div>
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            )}
+          </div>
+
+          {/* Navigation controls */}
+          <div className="mt-5 max-w-[780px] mx-auto flex items-center justify-between gap-4">
+            {/* Back button */}
+            <button
+              onClick={goPrev}
+              className="group flex items-center gap-2 rounded-xl border border-border/60 bg-card px-5 py-2.5 text-sm font-semibold text-muted-foreground shadow-sm transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/30 hover:scale-105 active:scale-95"
+              aria-label="Previous project"
+            >
+              <ChevronLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+              Back
+            </button>
+
+            {/* Dot indicators */}
+            <div className="flex items-center gap-2">
+              {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={cn(
+                    "rounded-full transition-all duration-300",
+                    i === currentIndex
+                      ? "h-2.5 w-6 bg-accent"
+                      : "h-2 w-2 bg-border hover:bg-accent/50"
+                  )}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next button */}
+            <button
+              onClick={goNext}
+              className="group flex items-center gap-2 rounded-xl border border-border/60 bg-card px-5 py-2.5 text-sm font-semibold text-muted-foreground shadow-sm transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/30 hover:scale-105 active:scale-95"
+              aria-label="Next project"
+            >
+              Next
+              <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </button>
+          </div>
         </div>
 
         {/* Certifications */}
-        <div>
-          <div 
+        <div
           ref={certHeaderRef}
-          className={`space-y-3 mb-6 scroll-reveal ${certHeaderRevealed ? 'revealed' : ''}`}
+          className={`scroll-reveal ${certHeaderRevealed ? 'revealed' : ''}`}
           style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
+          <div className="space-y-3 mb-6">
           <Shuffle
             text="Certifications"
             tag="h2"
@@ -197,9 +273,8 @@ export function ProjectsSection() {
         </div>
         
           <div 
-          className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 scroll-reveal ${certGridRevealed ? 'revealed' : ''}`}
+          className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}
           ref={certGridRef}
-          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         > 
             {certifications.map((cert, index) => (
               <a
