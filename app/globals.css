@@ -619,6 +619,39 @@ html {
 .scroll-delay-5 { transition-delay: 500ms; }
 .scroll-delay-6 { transition-delay: 600ms; }
 
+/* Stagger child entrance animation — fires when parent gains .revealed */
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal .stagger-child,
+.scroll-reveal-left .stagger-child,
+.scroll-reveal-right .stagger-child,
+.scroll-reveal-scale .stagger-child {
+  opacity: 0;
+}
+
+.scroll-reveal.revealed .stagger-child,
+.scroll-reveal-left.revealed .stagger-child,
+.scroll-reveal-right.revealed .stagger-child,
+.scroll-reveal-scale.revealed .stagger-child {
+  animation: stagger-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.revealed .stagger-child:nth-child(1) { animation-delay: 0ms; }
+.revealed .stagger-child:nth-child(2) { animation-delay: 120ms; }
+.revealed .stagger-child:nth-child(3) { animation-delay: 240ms; }
+.revealed .stagger-child:nth-child(4) { animation-delay: 360ms; }
+.revealed .stagger-child:nth-child(5) { animation-delay: 480ms; }
+.revealed .stagger-child:nth-child(6) { animation-delay: 600ms; }
+
 /* Hide default cursor when custom cursor is active */
 @media (pointer: fine) {
   body.custom-cursor * {

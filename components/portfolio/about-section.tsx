@@ -63,11 +63,11 @@ export function AboutSection() {
   });
 
   return (
-    <section className="py-6 lg:py-10">
+    <section className="py-6 lg:py-8">
       {/* Section Header*/}
       <div 
         ref={headerRef}
-        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <div className="space-y-3 flex-1">
@@ -143,7 +143,7 @@ export function AboutSection() {
       </div>
 
       <div 
-        className={`grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-10 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         {/* Left column - Personal info */}
@@ -225,10 +225,10 @@ export function AboutSection() {
       {/* Education Section */}
       <div 
         ref={educationRef}
-        className={`mt-8 mb-4 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Education"
             tag="h2"
@@ -246,13 +246,13 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             This outlines my educational background and the academic path I have followed to gain the knowledge and skills I have today.
           </p>
         </div>
         
         <div className="space-y-4">
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
             <div className="h-1.5 w-full bg-gradient-to-r from-red-600 via-red-500/60 to-transparent" />
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
@@ -275,7 +275,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
             <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
@@ -303,10 +303,10 @@ export function AboutSection() {
       {/* Other Skills Section */}
       <div 
         ref={otherSkillsRef}
-        className={`mt-8 mb-4 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Other Skills"
             tag="h2"
@@ -324,7 +324,7 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Beyond technical expertise, I bring a diverse range of skills from journalism, public relations, and student leadership that enhance my professional versatility.
           </p>
         </div>
@@ -380,7 +380,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   Since my freshman year, I have served as a core member of the Partnerships and Public Relations team.
                   In this role, I have successfully spearheaded the organization of over 7 major tech events. To date,
                   I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
@@ -411,7 +411,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   A dedicated journalist since primary school, I have contributed to three distinct school publications
                   and competed at the Regional Schools Press Conference (RSPC). My commitment to the craft culminated
                   in graduating with the Journalist of the Year award in high school, reflecting a long-standing
@@ -443,7 +443,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   I am a versatile student leader with a decade of experience across four institutions,
                   holding key executive roles including President, Auditor, and PIO.
                   Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral
@@ -463,7 +463,7 @@ export function AboutSection() {
       </div>
 
       {/* Circular Gallery Section */}
-      <div className="mt-4 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
+      <div className="mt-10 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
         <CircularGallery 
           bend={1}
           borderRadius={0.05}
@@ -475,10 +475,10 @@ export function AboutSection() {
       {/* Academic Credentials Section */}
       <div 
         ref={academicRef}
-        className={`mt-8 mb-4 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+        className={`mt-10 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
-          <div className="mb-4">
+          <div className="mb-6">
           <Shuffle
             text="Academic Credentials"
             tag="h2"
@@ -496,16 +496,16 @@ export function AboutSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="text-base text-foreground/70 mt-1">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Recognition of academic achievements and leadership excellence throughout my educational journey.
           </p>
         </div>
         
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Arellano University */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
             <div className="p-5 space-y-5">
               {/* Header */}
               <div className="flex items-start justify-between gap-3">
@@ -565,9 +565,9 @@ export function AboutSection() {
           </div>
 
           {/* Pasay City West High School */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="h-1.5 w-full bg-gradient-to-r from-violet-600 via-violet-500/60 to-transparent" />
             <div className="p-5 space-y-5">
               {/* Header */}
               <div className="flex items-start justify-between gap-3">

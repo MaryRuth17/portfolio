@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Github, ExternalLink, Star, GitFork, Layers, Palette, Camera, Award, ExternalLinkIcon } from "lucide-react";
+import { Github, Award, ExternalLinkIcon, ChevronLeft, ChevronRight, Sparkles, Linkedin, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -13,10 +13,8 @@ const featuredProjects = [
     title: "By7eQuest",
     description:
       "By7eQuest is a gamified approach to mastering Data Structures and Algorithms. It transforms complex concepts into interactive minigames to enhance student engagement and retention.",
-    icon: Layers,
     image: "/by7equest.jpg",
     gradient: "from-blue-500/20 via-cyan-500/10 to-teal-500/20",
-    iconColor: "text-blue-500",
     technologies: ["Unity", "Microsoft PlayFab", "ShaderLab", "HLSL"],
     github: "https://github.com/mjcarant0/by7equest",
     featured: true,
@@ -25,10 +23,8 @@ const featuredProjects = [
     title: "Kaching!",
     description:
       "A gamified budget tracker featuring an AI-driven financial guide, interactive mini-games, and social leaderboards. It leverages a rewards-based leveling system to encourage financial discipline through social connectivity and personalized AI insights.",
-    icon: Palette,
     image: "/kaching.jpg",
     gradient: "from-pink-500/20 via-rose-500/10 to-orange-500/20",
-    iconColor: "text-pink-500",
     technologies: ["Unity", "C#", "ShaderLab"],
     github: "https://github.com/mjcarant0/Kaching",
     featured: true,
@@ -37,47 +33,97 @@ const featuredProjects = [
 
 const certifications = [
   {
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    link: "https://example.com/cert1",
-    credentialId: "AWS-12345",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    date: "2026",
+    link: "https://www.credly.com/badges/e617c446-8a7c-4c02-868d-1c960cd9cf16/public_url",
+    credentialId: "",
   },
   {
-    title: "Professional Scrum Master I",
-    issuer: "Scrum.org",
-    date: "2023",
-    link: "https://example.com/cert2",
-    credentialId: "PSM-67890",
+    title: "Machine Learning, Artificial Intelligence (AI), and Cybersecurity",
+    issuer: "Coursera",
+    date: "2026",
+    link: "https://www.coursera.org/account/accomplishments/badge/Rs3kDOjJSxCN5AzoyQsQCA",
+    credentialId: "Rs3kDOjJSxCN5AzoyQsQCA",
   },
   {
-    title: "Google Cloud Professional Developer",
-    issuer: "Google Cloud",
-    date: "2023",
-    link: "https://example.com/cert3",
-    credentialId: "GCP-54321",
+    title: "See All Certifications",
+    issuer: "View my full list of certifications on LinkedIn",
+    date: "",
+    link: "https://www.linkedin.com/in/maryruthprelator/details/certifications/",
+    credentialId: "",
+    isLinkedIn: true,
   },
 ];
 
+const experience = [
+  {
+    period: "2024 — Present",
+    title: "Senior Frontend Engineer",
+    company: "TechCorp",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200&auto=format",
+    description:
+      "Leading the frontend architecture for the main product, implementing design systems, and mentoring junior developers. Focus on performance optimization and accessibility.",
+    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+  },
+  {
+    period: "2022 — 2024",
+    title: "Full-Stack Developer",
+    company: "StartupXYZ",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?q=80&w=200&auto=format",
+    description:
+      "Built and maintained multiple web applications from scratch, working closely with design and product teams to deliver pixel-perfect interfaces.",
+    technologies: ["Node.js", "React", "PostgreSQL", "AWS"],
+  },
+  {
+    period: "2020 — 2022",
+    title: "Frontend Developer",
+    company: "DigitalAgency",
+    link: "https://example.com",
+    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=200&auto=format",
+    description:
+      "Developed responsive websites and web applications for various clients, focusing on clean code and modern web standards.",
+    technologies: ["JavaScript", "Vue.js", "SCSS", "WordPress"],
+  },
+];
+
+// Total slides = real projects + 1 "More to Come" card
+const TOTAL_SLIDES = featuredProjects.length + 1;
+
 export function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ triggerOnce: false });
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certHeaderRef, isRevealed: certHeaderRevealed } = useScrollReveal({ triggerOnce: false });
   const { ref: certGridRef, isRevealed: certGridRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: expHeaderRef, isRevealed: expHeaderRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.05,
+    rootMargin: "200px 0px -100px 0px",
+  });
+  const { ref: expContentRef, isRevealed: expContentRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.02,
+    rootMargin: "200px 0px -50px 0px",
+  });
+
+  const goPrev = () => setCurrentIndex((i) => (i - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
+  const goNext = () => setCurrentIndex((i) => (i + 1) % TOTAL_SLIDES);
+
+  const isMoreToGo = currentIndex === featuredProjects.length;
+  const project = !isMoreToGo ? featuredProjects[currentIndex] : null;
 
   return (
-    <section className="py-12 lg:py-16">
-      <div className="space-y-16">
-        {/* Header */}
-        <div 
-          ref={headerRef}
-          className={`space-y-4 scroll-reveal-left ${headerRevealed ? 'revealed' : ''}`}
-        >
+    <section className="py-6 lg:py-8">
+      <div className="space-y-10">
+        {/* Section Header */}
+        <div className="space-y-3">
           <Shuffle
             text="Featured Projects"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
@@ -91,98 +137,258 @@ export function ProjectsSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="max-w-2xl text-lg text-muted-foreground">
-            {"Showcase of my most impactful projects that demonstrate creativity, technical skills, and problem-solving abilities."}
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed">
+            Showcase of my most impactful projects that demonstrate creativity, technical skills, and problem-solving abilities.
           </p>
         </div>
 
-        {/* Featured Projects - Enhanced 2-column layout */}
-        <div 
+        {/* Featured Projects — Carousel */}
+        <div
           ref={gridRef}
-          className={`grid gap-8 lg:grid-cols-2 scroll-reveal-scale ${gridRevealed ? 'revealed' : ''}`}
+          className={`scroll-reveal ${gridRevealed ? 'revealed' : ''}`}
+          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
-          {featuredProjects.map((project, index) => {
-            const IconComponent = project.icon;
-            return (
-              <article
-                key={project.title}
-                className="smooth-card glow-effect group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card"
-                style={{ animationDelay: `${index * 150}ms` }}
-                onMouseEnter={() => setHoveredProject(project.title)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                {/* Project image/preview card */}
-                <div className={cn(
-                  "relative h-48 w-full overflow-hidden bg-gradient-to-br",
-                  project.gradient
-                )}>
-                  {project.image && (
+          {/* Slide */}
+          <div className="max-w-[780px] mx-auto">
+            {isMoreToGo ? (
+              /* ── More to Come card ── */
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                {/* Left placeholder — mirrors the image card */}
+                <div className="group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden border border-dashed border-accent/40 bg-accent/5 flex items-center justify-center transition-all duration-300 hover:border-accent hover:shadow-md hover:shadow-accent/10">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                    <Sparkles className="h-8 w-8 text-accent" />
+                  </div>
+                </div>
+
+                {/* Text — matches real project text panel */}
+                <div className="flex flex-1 flex-col justify-between gap-4 py-1 sm:py-3">
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Coming Next</p>
+                    <h3 className="text-2xl font-bold text-foreground leading-tight">More to Go</h3>
+                    <p className="text-sm leading-relaxed text-foreground/70">
+                      More projects are on the way. Stay tuned for upcoming builds, experiments, and collaborations.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["In Progress", "Coming Soon", "Stay Tuned"].map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ── Real project — image card + outside text ── */
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                {/* Image card — no text inside */}
+                <div
+                  className={cn(
+                    "group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-gradient-to-br shadow-md",
+                    project!.gradient
+                  )}
+                  onMouseEnter={() => setHoveredProject(project!.title)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  {project!.image && (
                     <div className="absolute inset-0">
-                      <Image 
-                        src={project.image} 
-                        alt={`${project.title} screenshot`}
+                      <Image
+                        src={project!.image}
+                        alt={`${project!.title} screenshot`}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="400px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
-                  {/* Animated background pattern */}
-                  <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-4 left-4 w-32 h-32 rounded-full bg-accent/20 blur-2xl transition-transform duration-700 group-hover:scale-150" />
-                    <div className="absolute bottom-4 right-4 w-24 h-24 rounded-full bg-accent/10 blur-xl transition-transform duration-700 group-hover:scale-125" />
-                  </div>
-                  
-                  {/* Hover overlay with actions */}
+                  {/* GitHub hover overlay */}
                   <div className={cn(
-                    "absolute inset-0 flex items-center justify-center gap-4 bg-background/90 backdrop-blur-md transition-all duration-400",
-                    hoveredProject === project.title ? "opacity-100" : "opacity-0 pointer-events-none"
+                    "absolute inset-0 flex items-center justify-center bg-background/75 backdrop-blur-sm transition-all duration-300",
+                    hoveredProject === project!.title ? "opacity-100" : "opacity-0 pointer-events-none"
                   )}>
                     <a
-                      href={project.github}
+                      href={project!.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background transition-all duration-300 hover:scale-110 hover:shadow-lg transform translate-y-4 group-hover:translate-y-0"
-                      aria-label={`View ${project.title} source code on GitHub`}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-xs font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      aria-label={`View ${project!.title} on GitHub`}
                     >
-                      <Github className="h-5 w-5" />
+                      <Github className="h-3.5 w-3.5" />
+                      View on GitHub
                     </a>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-accent">{project.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
+                {/* Text — outside the card, no background */}
+                <div className="flex flex-1 flex-col justify-between gap-4 py-1 sm:py-3">
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Featured Project</p>
+                    <h3 className="text-2xl font-bold text-foreground leading-tight">{project!.title}</h3>
+                    <p className="text-sm leading-relaxed text-foreground/70">{project!.description}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project!.technologies.map((tech) => (
                       <Badge
                         key={tech}
                         variant="secondary"
-                        className="rounded-full px-2.5 py-0.5 text-xs transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+                        className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
                       >
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            )}
+          </div>
+
+          {/* Navigation controls */}
+          <div className="mt-5 max-w-[780px] mx-auto flex items-center justify-between gap-4">
+            {/* Back button */}
+            <button
+              onClick={goPrev}
+              className="group flex items-center gap-2 rounded-xl border border-border/60 bg-card px-5 py-2.5 text-sm font-semibold text-muted-foreground shadow-sm transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/30 hover:scale-105 active:scale-95"
+              aria-label="Previous project"
+            >
+              <ChevronLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+              Back
+            </button>
+
+            {/* Dot indicators */}
+            <div className="flex items-center gap-2">
+              {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={cn(
+                    "rounded-full transition-all duration-300",
+                    i === currentIndex
+                      ? "h-2.5 w-6 bg-accent"
+                      : "h-2 w-2 bg-border hover:bg-accent/50"
+                  )}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next button */}
+            <button
+              onClick={goNext}
+              className="group flex items-center gap-2 rounded-xl border border-border/60 bg-card px-5 py-2.5 text-sm font-semibold text-muted-foreground shadow-sm transition-all duration-300 hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/30 hover:scale-105 active:scale-95"
+              aria-label="Next project"
+            >
+              Next
+              <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div
+          ref={expHeaderRef}
+          className={`scroll-reveal ${expHeaderRevealed ? 'revealed' : ''}`}
+          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
+        >
+          <div className="space-y-3 mb-6">
+            <Shuffle
+              text="Experience"
+              tag="h2"
+              className="text-2xl font-bold tracking-tight sm:text-3xl"
+              shuffleDirection="right"
+              duration={0.35}
+              animationMode="evenodd"
+              shuffleTimes={1}
+              ease="power3.out"
+              stagger={0.03}
+              threshold={0.1}
+              triggerOnce={false}
+              triggerOnHover
+              respectReducedMotion={true}
+              loop={false}
+              loopDelay={0}
+            />
+            <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
+              My professional journey and the roles that shaped my career.
+            </p>
+          </div>
+          <div
+            ref={expContentRef}
+            className={`space-y-4 scroll-reveal ${expContentRevealed ? 'revealed' : ''}`}
+            style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
+          >
+            {experience.map((job, index) => (
+              <div
+                key={index}
+                className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Top accent bar */}
+                <div className="h-1 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+                <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:gap-6 p-4 sm:p-5">
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-right sm:pt-1">
+                    {job.period}
+                  </span>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      {job.logo && (
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50">
+                          <img
+                            src={job.logo}
+                            alt={`${job.company} logo`}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <h3 className="text-base font-bold text-foreground leading-tight">
+                          <a
+                            href={job.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 transition-colors hover:text-accent"
+                          >
+                            {job.title} · {job.company}
+                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </a>
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-sm leading-relaxed text-foreground/80">
+                      {job.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {job.technologies.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Certifications */}
-        <div className="mt-20">
-          <div 
+        <div
           ref={certHeaderRef}
-          className={`space-y-4 mb-10 scroll-reveal-left ${certHeaderRevealed ? 'revealed' : ''}`}
+          className={`scroll-reveal ${certHeaderRevealed ? 'revealed' : ''}`}
+          style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
+          <div className="space-y-3 mb-6">
           <Shuffle
             text="Certifications"
             tag="h2"
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-2xl font-bold tracking-tight sm:text-3xl"
             shuffleDirection="right"
             duration={0.35}
             animationMode="evenodd"
@@ -196,13 +402,13 @@ export function ProjectsSection() {
             loop={false}
             loopDelay={0}
           />
-          <p className="max-w-2xl text-muted-foreground">
+          <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
             Professional certifications and achievements that demonstrate my expertise and commitment to continuous learning.
           </p>
         </div>
         
           <div 
-          className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 scroll-reveal-scale ${certGridRevealed ? 'revealed' : ''}`}
+          className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}
           ref={certGridRef}
         > 
             {certifications.map((cert, index) => (
@@ -211,35 +417,60 @@ export function ProjectsSection() {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="smooth-card group relative flex flex-col rounded-xl border border-border/50 bg-card p-6 hover:bg-card hover:border-accent/50 transition-all duration-300"
-                style={{ animationDelay: `${500 + index * 75}ms` }}
+                className="smooth-card stagger-child group relative flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card hover:border-accent/50 hover:shadow-md hover:shadow-accent/5 transition-all duration-300"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
-                    <Award className="h-6 w-6 text-accent" />
+                {/* Top accent bar */}
+                <div className="h-0.5 w-full bg-gradient-to-r from-accent via-accent/50 to-transparent shrink-0" />
+                {(cert as any).isLinkedIn ? (
+                  /* LinkedIn "See All" card */
+                  <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                      <Linkedin className="h-6 w-6 text-accent" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <h4 className="text-base font-bold text-foreground leading-tight group-hover:text-accent transition-colors duration-300">
+                        {cert.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {cert.issuer}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-accent mt-auto">
+                      <span>View on LinkedIn</span>
+                      <ExternalLinkIcon className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-base leading-tight mb-2 group-hover:text-accent transition-colors duration-300">
-                      {cert.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground font-medium">
-                      {cert.issuer}
-                    </p>
+                ) : (
+                  <div className="flex flex-1 flex-col p-4">
+                    <div className="flex items-start gap-2.5 mb-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
+                        <Award className="h-4 w-4 text-accent" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-base font-bold text-foreground leading-tight mb-0.5 group-hover:text-accent transition-colors duration-300">
+                          {cert.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground font-medium">
+                          {cert.issuer}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-auto pt-3 space-y-2 border-t border-border/30">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">Issued</span>
+                        <span className="text-xs font-semibold text-foreground">{cert.date}</span>
+                      </div>
+                      <div className="text-xs text-muted-foreground font-mono bg-muted/30 rounded-md px-2 py-1">
+                        ID: {cert.credentialId}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-accent">
+                        <span>View Certificate</span>
+                        <ExternalLinkIcon className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="mt-auto pt-4 space-y-3 border-t border-border/30">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">Issued</span>
-                    <span className="text-xs font-medium text-foreground">{cert.date}</span>
-                  </div>
-                  <div className="text-xs text-muted-foreground font-mono bg-muted/30 rounded px-2 py-1.5">
-                    ID: {cert.credentialId}
-                  </div>
-                  <div className="flex items-center gap-2 text-sm font-medium text-accent pt-1">
-                    <span>View Certificate</span>
-                    <ExternalLinkIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </div>
-                </div>
+                )}
               </a>
             ))}
           </div>
