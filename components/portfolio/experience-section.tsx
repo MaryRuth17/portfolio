@@ -39,20 +39,29 @@ const experience = [
 ];
 
 export function ExperienceSection() {
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({ triggerOnce: false });
-  const { ref: contentRef, isRevealed: contentRevealed } = useScrollReveal({ triggerOnce: false });
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.05,
+    rootMargin: "200px 0px -100px 0px",
+  });
+  const { ref: contentRef, isRevealed: contentRevealed } = useScrollReveal({
+    triggerOnce: false,
+    threshold: 0.02,
+    rootMargin: "200px 0px -50px 0px",
+  });
 
   return (
-    <section className="py-12 lg:py-20">
+    <section className="py-6 lg:py-10">
       {/* Section Header */}
       <div 
         ref={headerRef}
-        className={`mb-12 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`mb-8 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <Shuffle
           text="Experience"
           tag="h2"
-          className="text-3xl font-bold tracking-tight sm:text-4xl mb-4"
+          className="text-2xl font-bold tracking-tight sm:text-3xl mb-2"
           shuffleDirection="right"
           duration={0.35}
           animationMode="evenodd"
@@ -66,7 +75,7 @@ export function ExperienceSection() {
           loop={false}
           loopDelay={0}
         />
-        <p className="text-muted-foreground max-w-2xl">
+        <p className="text-base text-foreground/70 mt-1 max-w-2xl">
           My professional journey and the roles that shaped my career.
         </p>
       </div>
@@ -75,21 +84,24 @@ export function ExperienceSection() {
       <div 
         ref={contentRef}
         className={`space-y-4 scroll-reveal ${contentRevealed ? 'revealed' : ''}`}
+        style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         {experience.map((job, index) => (
           <div
             key={index}
-            className="smooth-card group relative rounded-xl border border-border/50 bg-card/50 p-6 transition-all hover:bg-card hover:shadow-lg"
-            style={{ animationDelay: `${index * 100}ms` }}
+            className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
-            <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:gap-6">
+            {/* Top accent bar */}
+            <div className="h-1 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+            <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:gap-6 p-4 sm:p-5">
               <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-right sm:pt-1">
                 {job.period}
               </span>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   {job.logo && (
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg overflow-hidden bg-secondary border border-border/50">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50">
                       <img 
                         src={job.logo} 
                         alt={`${job.company} logo`}
@@ -98,7 +110,7 @@ export function ExperienceSection() {
                     </div>
                   )}
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold leading-snug">
+                    <h3 className="text-base font-bold text-foreground leading-tight">
                       <a
                         href={job.link}
                         target="_blank"
@@ -111,15 +123,15 @@ export function ExperienceSection() {
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-foreground/80">
                   {job.description}
                 </p>
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {job.technologies.map((tech) => (
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="rounded-full px-3 py-0.5 text-xs transition-colors hover:bg-accent hover:text-accent-foreground"
+                      className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
                     >
                       {tech}
                     </Badge>

@@ -252,7 +252,7 @@ export function AboutSection() {
         </div>
         
         <div className="space-y-4">
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
             <div className="h-1.5 w-full bg-gradient-to-r from-red-600 via-red-500/60 to-transparent" />
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
@@ -275,7 +275,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
             <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
@@ -380,7 +380,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   Since my freshman year, I have served as a core member of the Partnerships and Public Relations team.
                   In this role, I have successfully spearheaded the organization of over 7 major tech events. To date,
                   I have cultivated and managed a network of 80+ community organizations and secured collaborations with 40+ industry sponsors.
@@ -411,7 +411,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   A dedicated journalist since primary school, I have contributed to three distinct school publications
                   and competed at the Regional Schools Press Conference (RSPC). My commitment to the craft culminated
                   in graduating with the Journalist of the Year award in high school, reflecting a long-standing
@@ -443,7 +443,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   I am a versatile student leader with a decade of experience across four institutions,
                   holding key executive roles including President, Auditor, and PIO.
                   Currently serving as CE Deputy Commissioner for the PUP COMELEC, specializing in electoral
@@ -503,7 +503,7 @@ export function AboutSection() {
         
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Arellano University */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
             <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
             <div className="p-5 space-y-5">
@@ -565,7 +565,7 @@ export function AboutSection() {
           </div>
 
           {/* Pasay City West High School */}
-          <div className="smooth-card group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
             {/* Top accent bar */}
             <div className="h-1.5 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
             <div className="p-5 space-y-5">
