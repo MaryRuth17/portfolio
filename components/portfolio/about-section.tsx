@@ -49,17 +49,17 @@ export function AboutSection() {
   const { ref: educationRef, isRevealed: educationRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "200px 0px -100px 0px" 
+    rootMargin: "0px 0px -100px 0px" 
   });
   const { ref: otherSkillsRef, isRevealed: otherSkillsRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "200px 0px -100px 0px" 
+    rootMargin: "0px 0px -100px 0px" 
   });
   const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "200px 0px -100px 0px" 
+    rootMargin: "0px 0px -100px 0px" 
   });
 
   return (
