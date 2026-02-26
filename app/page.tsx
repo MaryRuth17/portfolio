@@ -10,6 +10,7 @@ import { AboutSection } from "@/components/portfolio/about-section";
 import { ProjectsSection } from "@/components/portfolio/projects-section";
 import { Footer } from "@/components/portfolio/footer";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
+import { FloatingActionButton } from "@/components/portfolio/floating-action-button";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -60,6 +61,24 @@ export default function Portfolio() {
         return;
       }
 
+      // If the footer (contact section) is visible in the viewport, activate contact
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          setActiveSection("contact");
+          return;
+        }
+      }
+
+      // If near the bottom of the page, activate contact (fallback)
+      const nearBottom =
+        scrollPosition + window.innerHeight >= document.documentElement.scrollHeight - 200;
+      if (nearBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -75,6 +94,24 @@ export default function Portfolio() {
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Dedicated IntersectionObserver for footer/contact section
+  useEffect(() => {
+    const contactEl = document.getElementById("contact");
+    if (!contactEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveSection("contact");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(contactEl);
+    return () => observer.disconnect();
   }, []);
 
   // IntersectionObserver to trigger smooth animations when sections enter viewport
@@ -173,10 +210,12 @@ export default function Portfolio() {
           >
             <ProjectsSection />
           </section>
-
-          <Footer />
         </div>
+
+        <Footer />
       </main>
+
+      <FloatingActionButton />
     </>
   );
 }
