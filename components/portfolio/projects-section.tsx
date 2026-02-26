@@ -58,19 +58,54 @@ const certifications = [
 
 const organizationalExperience = [
   {
-    period: "2020 — 2022",
-    title: "Frontend Developer",
-    company: "DigitalAgency",
-    link: "https://example.com",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=200&auto=format",
+    period: "2025 — Present",
+    title: "VP For Business Development",
+    company: "CyberPH",
+    link: "https://www.facebook.com/LearnCyberPH",
+    logo: "cyberph.jpg",
     description:
-      "Developed responsive websites and web applications for various clients, focusing on clean code and modern web standards.",
+      "Driving strategic growth and industry partnerships to expand CyberPH's impact within the Philippine cybersecurity ecosystem.",
+  },
+  {
+    period: "2024 — Present",
+    title: "External Relations Officer - Executive Auditor",
+    company: "ICPEP SE - PUP",
+    link: "https://www.facebook.com/icpepse.pupmanila",
+    logo: "icpep.jpg",
+    description:
+      "Managing external organizational relations to ensuring financial transparency and procedural compliance through rigorous executive auditing.",
+  },
+  {
+    period: "2024 — Present",
+    title: "Cybersecurity Cadet / Industry Partnerships Co-Lead",
+    company: "GDG on Campus PUP",
+    link: "https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/?fbclid=IwY2xjawQNoctleHRuA2FlbQIxMABicmlkETJrRlZHeWJKVU0yUGZRcVVTc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHokqQmKpkdiL74wWUJLKL-6rP4W2sWyeiGACGbJeybdgVocphaVGOGX6a-Rj_aem_29iMPkxLaZQfij4_ZRuomw",
+    logo: "gdg.jpg",
+    description:
+      "Cultivating high-impact industry partnerships andadvancing technical proficiency within the cybersecurity cadetship program.",
+  },
+  {
+    period: "2025 & 2026",
+    title: "Partnerships Committee",
+    company: "Arduino Day Philippines",
+    link: "https://www.facebook.com/arduinodayph",
+    logo: "adph.jpg",
+    description:
+      "Securing strategic sponsorships and community collaborations to drive the success of nationwide hardware and IoT initiatives.",
+  },
+  {
+    period: "2025",
+    title: "External Relations Officer",
+    company: "AWS Cloud Clubs Philippines - SCD 2025",
+    link: "https://www.facebook.com/AWSCloudClubsPhilippines",
+    logo: "awscd.jpg",
+    description:
+      "Managing external organizational relations and coordinating with industry partners to support AWS Cloud Clubs Philippines' initiatives.",
   },
 ];
 
 const professionalExperience: typeof organizationalExperience = [];
 
-// Total slides = real projects + 1 "More to Come" card
 const TOTAL_SLIDES = featuredProjects.length + 1;
 
 export function ProjectsSection() {
