@@ -251,8 +251,7 @@ export function AboutSection() {
         </div>
         
         <div className="space-y-4">
-          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
-            <div className="h-1.5 w-full bg-gradient-to-r from-red-600 via-red-500/60 to-transparent" />
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:!border-red-500/60 bg-card transition-all duration-300 hover:![box-shadow:0_0_22px_4px_rgba(239,68,68,0.30)]">
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-500/10 border border-red-500/20">
@@ -274,8 +273,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
-            <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:!border-blue-500/60 bg-card transition-all duration-300 hover:![box-shadow:0_0_22px_4px_rgba(59,130,246,0.30)]">
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20">
