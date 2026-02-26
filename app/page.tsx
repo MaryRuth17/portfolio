@@ -17,7 +17,12 @@ export default function Portfolio() {
   const [showHeader, setShowHeader] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
+  // Pre-seed all section IDs so content is visible on first paint.
+  // The IntersectionObserver will remove/re-add them to drive the
+  // hide → slide-in animation when sections scroll out and back in.
+  const [animatedSections, setAnimatedSections] = useState<Set<string>>(
+    new Set(["about", "projects", "contact"])
+  );
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   // Handle scroll to section
@@ -120,13 +125,16 @@ export default function Portfolio() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            const sectionId = entry.target.id;
-            
+            // Prefer data-section attribute over element id so wrapper divs
+            // (e.g. the footer wrapper) can participate without overriding scroll targets.
+            const sectionId =
+              (entry.target as HTMLElement).dataset.section ?? entry.target.id;
+
             if (entry.isIntersecting) {
               // Section is entering viewport - trigger animation
               setAnimatedSections((prev) => new Set(prev).add(sectionId));
             } else {
-              // Section is leaving viewport - remove animation class so it can animate again
+              // Section is leaving viewport - reset so it can animate again on re-entry
               setAnimatedSections((prev) => {
                 const newSet = new Set(prev);
                 newSet.delete(sectionId);
@@ -136,8 +144,8 @@ export default function Portfolio() {
           });
         },
         {
-          threshold: 0.2,
-          rootMargin: "0px",
+          threshold: 0.08,
+          rootMargin: "0px 0px -60px 0px",
         }
       );
 
@@ -171,7 +179,7 @@ export default function Portfolio() {
         <HeroSection onScrollDown={scrollToAbout} />
 
         {/* Scroll Velocity Transition - Large and tilted */}
-        <div className="overflow-hidden -rotate-2 scale-110 my-8">
+        <div className="overflow-hidden -rotate-2 sm:scale-110 my-6 sm:my-8">
           <ScrollVelocity
             texts={["Software Development", "Cybersecurity"]}
             velocity={120}
@@ -186,33 +194,46 @@ export default function Portfolio() {
         {/* Main content */}
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* About Section */}
-          <section 
+          <section
             ref={(el) => { sectionRefs.current.about = el; }}
-            id="about" 
-            className={`scroll-mt-28 transition-all duration-700 ease-out ${
-              animatedSections.has("about") 
-                ? "animate-fade-in-up" 
-                : ""
+            id="about"
+            data-section="about"
+            className={`scroll-mt-28 section-transition ${
+              animatedSections.has("about")
+                ? "section-visible-state"
+                : "section-hidden-state"
             }`}
           >
             <AboutSection />
           </section>
 
           {/* Projects Section */}
-          <section 
+          <section
             ref={(el) => { sectionRefs.current.projects = el; }}
-            id="projects" 
-            className={`scroll-mt-28 transition-all duration-700 ease-out ${
-              animatedSections.has("projects") 
-                ? "animate-fade-in-up" 
-                : ""
+            id="projects"
+            data-section="projects"
+            className={`scroll-mt-28 section-transition ${
+              animatedSections.has("projects")
+                ? "section-visible-state"
+                : "section-hidden-state"
             }`}
           >
             <ProjectsSection />
           </section>
         </div>
 
-        <Footer />
+        {/* Contact / Footer — animated wrapper */}
+        <div
+          ref={(el) => { sectionRefs.current.contact = el; }}
+          data-section="contact"
+          className={`section-transition ${
+            animatedSections.has("contact")
+              ? "section-visible-state"
+              : "section-hidden-state"
+          }`}
+        >
+          <Footer />
+        </div>
       </main>
 
       <FloatingActionButton />

@@ -48,15 +48,15 @@ export function Footer() {
 
   return (
     <footer id="contact" className="border-t border-border/50 py-14 bg-background/80 backdrop-blur-lg transition-colors duration-500">
-      <div className="flex flex-col gap-10 w-full px-6 sm:px-10 lg:px-16">
-        <div className="w-full flex flex-col lg:flex-row items-start gap-14">
+      <div className="flex flex-col gap-8 sm:gap-10 w-full px-4 sm:px-8 lg:px-16">
+        <div className="w-full flex flex-col lg:flex-row items-start gap-8 lg:gap-14">
           {/* Left: heading + description, vertically centered */}
           <div className="text-left space-y-4 lg:w-[28%] flex flex-col justify-center self-stretch">
             <Shuffle
               text="Let's Work Together!"
               tag="h2"
               textAlign="left"
-              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
               shuffleDirection="right"
               duration={0.35}
               animationMode="evenodd"

@@ -327,7 +327,7 @@ export function AboutSection() {
         </div>
         
         {/* Tab Buttons */}
-        <div className="flex justify-center gap-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
           <button
             onClick={() => setActiveTab('Public Relations')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
@@ -361,10 +361,10 @@ export function AboutSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="max-w-[780px] mx-auto px-4">
+        <div className="max-w-[780px] mx-auto px-0 sm:px-4">
           {/* Public Relations Card */}
           {activeTab === 'Public Relations' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/public-relations.jpg"
@@ -395,7 +395,7 @@ export function AboutSection() {
 
           {/* Journalism Card */}
           {activeTab === 'Journalism' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/journalism.jpg"
@@ -427,7 +427,7 @@ export function AboutSection() {
 
           {/* Student Leadership Card */}
           {activeTab === 'Student Leadership' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/student-leadership.jpg"

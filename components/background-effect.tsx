@@ -7,9 +7,11 @@ import LightRays from "@/components/ui/LightRays";
 export function BackgroundEffect() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [hasFinePointer, setHasFinePointer] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setHasFinePointer(window.matchMedia("(pointer: fine)").matches);
   }, []);
 
   if (!mounted) return null;
@@ -43,7 +45,7 @@ export function BackgroundEffect() {
         raysSpeed={1}
         lightSpread={0.5}
         rayLength={3}
-        followMouse={true}
+        followMouse={hasFinePointer}
         mouseInfluence={0.1}
         noiseAmount={0}
         distortion={0}
