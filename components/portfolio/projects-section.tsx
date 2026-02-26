@@ -56,27 +56,7 @@ const certifications = [
   },
 ];
 
-const experience = [
-  {
-    period: "2024 — Present",
-    title: "Senior Frontend Engineer",
-    company: "TechCorp",
-    link: "https://example.com",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200&auto=format",
-    description:
-      "Leading the frontend architecture for the main product, implementing design systems, and mentoring junior developers. Focus on performance optimization and accessibility.",
-    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
-  },
-  {
-    period: "2022 — 2024",
-    title: "Full-Stack Developer",
-    company: "StartupXYZ",
-    link: "https://example.com",
-    logo: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?q=80&w=200&auto=format",
-    description:
-      "Built and maintained multiple web applications from scratch, working closely with design and product teams to deliver pixel-perfect interfaces.",
-    technologies: ["Node.js", "React", "PostgreSQL", "AWS"],
-  },
+const organizationalExperience = [
   {
     period: "2020 — 2022",
     title: "Frontend Developer",
@@ -85,9 +65,10 @@ const experience = [
     logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=200&auto=format",
     description:
       "Developed responsive websites and web applications for various clients, focusing on clean code and modern web standards.",
-    technologies: ["JavaScript", "Vue.js", "SCSS", "WordPress"],
   },
 ];
+
+const professionalExperience: typeof organizationalExperience = [];
 
 // Total slides = real projects + 1 "More to Come" card
 const TOTAL_SLIDES = featuredProjects.length + 1;
@@ -109,10 +90,13 @@ export function ProjectsSection() {
     rootMargin: "200px 0px -50px 0px",
   });
 
+  const [activeExpTab, setActiveExpTab] = useState<"professional" | "organizational">("organizational");
+
   const goPrev = () => setCurrentIndex((i) => (i - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
   const goNext = () => setCurrentIndex((i) => (i + 1) % TOTAL_SLIDES);
 
   const isMoreToGo = currentIndex === featuredProjects.length;
+  const activeExperience = activeExpTab === "professional" ? professionalExperience : organizationalExperience;
   const project = !isMoreToGo ? featuredProjects[currentIndex] : null;
 
   return (
@@ -312,15 +296,53 @@ export function ProjectsSection() {
               loopDelay={0}
             />
             <p className="text-base text-foreground/70 max-w-2xl leading-relaxed mt-2">
-              My professional journey and the roles that shaped my career.
+              My journey across professional roles and organizational involvement.
             </p>
+            {/* Tab switcher */}
+            <div className="flex gap-2 mt-4">
+              <button
+                onClick={() => setActiveExpTab("organizational")}
+                className={cn(
+                  "rounded-full px-4 py-1.5 text-sm font-semibold border transition-all duration-300",
+                  activeExpTab === "organizational"
+                    ? "bg-accent text-white border-accent shadow-md shadow-accent/30"
+                    : "bg-transparent text-muted-foreground border-border/60 hover:border-accent hover:text-accent"
+                )}
+              >
+                Organizational
+              </button>
+              <button
+                onClick={() => setActiveExpTab("professional")}
+                className={cn(
+                  "rounded-full px-4 py-1.5 text-sm font-semibold border transition-all duration-300",
+                  activeExpTab === "professional"
+                    ? "bg-accent text-white border-accent shadow-md shadow-accent/30"
+                    : "bg-transparent text-muted-foreground border-border/60 hover:border-accent hover:text-accent"
+                )}
+              >
+                Professional
+              </button>
+            </div>
           </div>
           <div
             ref={expContentRef}
             className={`space-y-4 scroll-reveal ${expContentRevealed ? 'revealed' : ''}`}
             style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
           >
-            {experience.map((job, index) => (
+            {activeExpTab === "professional" && activeExperience.length === 0 && (
+              <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-accent/40 bg-accent/5 py-12 px-6 text-center">
+                <div className="space-y-1.5">
+                  <p className="text-base font-bold text-foreground">Coming Soon!</p>
+                  <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
+                    No professional experience listed yet, but I&apos;m open to work and excited for what&apos;s next!
+                  </p>
+                </div>
+                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs font-semibold bg-accent/10 text-accent border border-accent/20">
+                  Open to Work
+                </Badge>
+              </div>
+            )}
+            {activeExperience.map((job, index) => (
               <div
                 key={index}
                 className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
@@ -361,15 +383,6 @@ export function ProjectsSection() {
                       {job.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 pt-1">
-                      {job.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="rounded-full px-2.5 py-0.5 text-xs font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
                     </div>
                   </div>
                 </div>
