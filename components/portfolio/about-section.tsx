@@ -62,7 +62,7 @@ export function AboutSection() {
   });
 
   return (
-    <section className="py-6 lg:py-8">
+    <section className="pt-12 lg:pt-16">
       {/* Section Header*/}
       <div 
         ref={headerRef}
@@ -224,7 +224,7 @@ export function AboutSection() {
       {/* Education Section */}
       <div 
         ref={educationRef}
-        className={`mt-10 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">
@@ -300,7 +300,7 @@ export function AboutSection() {
       {/* Other Skills Section */}
       <div 
         ref={otherSkillsRef}
-        className={`mt-10 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">
@@ -462,7 +462,7 @@ export function AboutSection() {
       {/* Academic Credentials Section */}
       <div 
         ref={academicRef}
-        className={`mt-10 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">

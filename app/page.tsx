@@ -202,7 +202,7 @@ export default function Portfolio() {
           <section 
             ref={(el) => { sectionRefs.current.projects = el; }}
             id="projects" 
-            className={`scroll-mt-28 transition-all duration-700 ease-out ${
+            className={`mt-20 scroll-mt-28 transition-all duration-700 ease-out ${
               animatedSections.has("projects") 
                 ? "animate-fade-in-up" 
                 : ""
@@ -212,7 +212,9 @@ export default function Portfolio() {
           </section>
         </div>
 
-        <Footer />
+        <div className="mt-20">
+          <Footer />
+        </div>
       </main>
 
       <FloatingActionButton />

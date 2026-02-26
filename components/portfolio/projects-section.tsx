@@ -137,8 +137,8 @@ export function ProjectsSection() {
   const project = !isMoreToGo ? featuredProjects[currentIndex] : null;
 
   return (
-    <section className="py-6 lg:py-8">
-      <div className="space-y-10">
+    <section className="pb-12 lg:pb-16">
+      <div className="space-y-20">
         {/* Section Header */}
         <div className="space-y-3">
           <Shuffle

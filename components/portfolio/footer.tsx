@@ -47,7 +47,28 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="border-t border-border/50 py-14 bg-background/80 backdrop-blur-lg transition-colors duration-500">
+    <footer id="contact" className="relative overflow-hidden border-t border-border/40 py-20 transition-colors duration-500">
+      {/* Background layers */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        {/* Base tinted surface */}
+        <div className="absolute inset-0 bg-background" />
+        {/* Top-left accent glow */}
+        <div className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[100px]" />
+        {/* Bottom-right accent glow */}
+        <div className="absolute -bottom-24 -right-24 h-[360px] w-[360px] rounded-full bg-accent/8 blur-[90px]" />
+        {/* Center soft gradient wash */}
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5" />
+        {/* Subtle dot grid */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        {/* Top border glow line */}
+        <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+      </div>
       <div className="flex flex-col gap-8 sm:gap-10 w-full px-4 sm:px-8 lg:px-16">
         <div className="w-full flex flex-col lg:flex-row items-start gap-8 lg:gap-14">
           {/* Left: heading + description, vertically centered */}
