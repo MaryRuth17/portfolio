@@ -10,6 +10,7 @@ import { AboutSection } from "@/components/portfolio/about-section";
 import { ProjectsSection } from "@/components/portfolio/projects-section";
 import { Footer } from "@/components/portfolio/footer";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
+import { FloatingActionButton } from "@/components/portfolio/floating-action-button";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -213,6 +214,8 @@ export default function Portfolio() {
 
         <Footer />
       </main>
+
+      <FloatingActionButton />
     </>
   );
 }
