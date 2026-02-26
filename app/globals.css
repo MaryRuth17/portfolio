@@ -383,42 +383,6 @@ html {
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
-/* ── Heavy Smooth Section Transitions ──────────────────────── */
-/*
-  Sections start invisible and elevated, then glide into place with
-  a soft blur dissolve. Uses a spring-like cubic-bezier for that
-  heavy-yet-smooth premium feel. The transition fires in both
-  directions so sections "breathe" as you scroll past them.
-*/
-.section-transition {
-  transition:
-    opacity   1.1s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter    0.9s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform, filter;
-}
-
-.section-hidden-state {
-  opacity: 0;
-  transform: translateY(80px) scale(0.97);
-  filter: blur(12px);
-  pointer-events: none;
-}
-
-@media (max-width: 640px) {
-  .section-hidden-state {
-    transform: translateY(40px) scale(0.98);
-    filter: blur(4px);
-  }
-}
-
-.section-visible-state {
-  opacity: 1;
-  transform: translateY(0px) scale(1);
-  filter: blur(0px);
-  pointer-events: auto;
-}
-
 /* Card hover animations */
 @keyframes card-lift {
   from {
