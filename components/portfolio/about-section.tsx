@@ -6,7 +6,6 @@ import { MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Shuffle from "@/components/ui/Shuffle";
 import Stack from "@/components/ui/Stack";
-import CircularGallery from "@/components/ui/CircularGallery";
 import { useState } from "react";
 
 const skillsfront = [
@@ -59,7 +58,7 @@ export function AboutSection() {
   const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "200px 0px -50px 0px" 
+    rootMargin: "0px 0px 300px 0px" 
   });
 
   return (
@@ -460,16 +459,6 @@ export function AboutSection() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Circular Gallery Section */}
-      <div className="mt-10 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
-        <CircularGallery 
-          bend={1}
-          borderRadius={0.05}
-          scrollSpeed={2}
-          scrollEase={0.05}
-        />
       </div>
 
       {/* Academic Credentials Section */}
