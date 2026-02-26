@@ -38,6 +38,7 @@ const certifications = [
     date: "2026",
     link: "https://www.credly.com/badges/e617c446-8a7c-4c02-868d-1c960cd9cf16/public_url",
     credentialId: "",
+    logo: "/icons/cisco.png",
   },
   {
     title: "Machine Learning, Artificial Intelligence (AI), and Cybersecurity",
@@ -45,6 +46,7 @@ const certifications = [
     date: "2026",
     link: "https://www.coursera.org/account/accomplishments/badge/Rs3kDOjJSxCN5AzoyQsQCA",
     credentialId: "Rs3kDOjJSxCN5AzoyQsQCA",
+    logo: "/icons/coursera.png",
   },
   {
     title: "See All Certifications",
@@ -380,28 +382,32 @@ export function ProjectsSection() {
             {activeExperience.map((job, index) => (
               <div
                 key={index}
-                className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
+                className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-500 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:bg-gradient-to-br hover:from-card hover:to-accent/5"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Top accent bar */}
-                <div className="h-1 w-full bg-gradient-to-r from-accent via-accent/60 to-transparent" />
+                {/* Left accent glow bar */}
+                <div className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-gradient-to-b from-transparent via-accent to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:top-3 group-hover:bottom-3" />
+                {/* Corner glow */}
+                <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-accent/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Shimmer sweep */}
+                <div className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
                 <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:gap-6 p-4 sm:p-5">
-                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-right sm:pt-1">
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors duration-300 group-hover:text-accent/70 sm:text-right sm:pt-1">
                     {job.period}
                   </span>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       {job.logo && (
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50 transition-all duration-300 group-hover:scale-110 group-hover:border-accent/40 group-hover:shadow-md group-hover:shadow-accent/20">
                           <img
                             src={job.logo}
                             alt={`${job.company} logo`}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
                       )}
                       <div className="flex-1">
-                        <h3 className="text-base font-bold text-foreground leading-tight">
+                        <h3 className="text-base font-bold text-foreground leading-tight transition-transform duration-300 group-hover:-translate-y-0.5">
                           <a
                             href={job.link}
                             target="_blank"
@@ -414,7 +420,7 @@ export function ProjectsSection() {
                         </h3>
                       </div>
                     </div>
-                    <p className="text-sm leading-relaxed text-foreground/80">
+                    <p className="text-sm leading-relaxed text-foreground/80 transition-all duration-300 group-hover:text-foreground/95 group-hover:translate-y-[-1px]">
                       {job.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 pt-1">
@@ -470,6 +476,8 @@ export function ProjectsSection() {
               >
                 {/* Top accent bar */}
                 <div className="h-0.5 w-full bg-gradient-to-r from-accent via-accent/50 to-transparent shrink-0" />
+                {/* Shimmer sweep */}
+                <div className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
                 {(cert as any).isLinkedIn ? (
                   /* LinkedIn "See All" card */
                   <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
@@ -492,8 +500,18 @@ export function ProjectsSection() {
                 ) : (
                   <div className="flex flex-1 flex-col p-4">
                     <div className="flex items-start gap-2.5 mb-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
-                        <Award className="h-4 w-4 text-accent" />
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                        {(cert as any).logo ? (
+                          <Image
+                            src={(cert as any).logo}
+                            alt={cert.issuer}
+                            width={36}
+                            height={36}
+                            className="h-full w-full object-contain p-1"
+                          />
+                        ) : (
+                          <Award className="h-4 w-4 text-accent" />
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-base font-bold text-foreground leading-tight mb-0.5 group-hover:text-accent transition-colors duration-300">

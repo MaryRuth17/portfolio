@@ -85,9 +85,11 @@ export function Footer() {
                   href={link.href}
                   target={isMailto ? undefined : "_blank"}
                   rel={isMailto ? undefined : "noopener noreferrer"}
-                  className="smooth-card group flex items-center gap-5 rounded-xl p-5 border border-border/50 bg-card hover:bg-card/80 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="smooth-card group relative overflow-hidden flex items-center gap-5 rounded-xl p-5 border border-border/50 bg-card hover:bg-card/80 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
+                  {/* Shimmer sweep */}
+                  <div className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary transition-all duration-300 group-hover:bg-accent group-hover:scale-110">
                     <img src={link.logo} alt={link.name} className="h-6 w-6 object-contain" />
                   </span>
