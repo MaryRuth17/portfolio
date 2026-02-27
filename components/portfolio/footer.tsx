@@ -2,42 +2,48 @@
 
 import { ArrowUpRight } from "lucide-react";
 import Shuffle from "@/components/ui/Shuffle";
+import facebookIcon  from "@/assets/images/icons/facebook.png";
+import instagramIcon from "@/assets/images/icons/instagram.png";
+import linkedinIcon  from "@/assets/images/icons/linkedin.png";
+import credlyIcon    from "@/assets/images/icons/credly.png";
+import gmailIcon     from "@/assets/images/icons/gmail.png";
+import githubIcon    from "@/assets/images/icons/github.png";
 
 const socialLinks = [
   {
     name: "Facebook",
     href: "https://www.facebook.com/y.maryruth17",
-    logo: "/icons/facebook.png",
+    logo: facebookIcon.src,
     handle: "Mary Ruth Relator",
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/its_mary.py",
-    logo: "/icons/instagram.png",
+    logo: instagramIcon.src,
     handle: "@its_mary.py",
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/maryruthprelator/",
-    logo: "/icons/linkedin.png",
+    logo: linkedinIcon.src,
     handle: "Mary Ruth Prelator",
   },
   {
     name: "Credly",
     href: "https://www.credly.com/users/relator-mary-ruth",
-    logo: "/icons/credly.png",
+    logo: credlyIcon.src,
     handle: "Mary Ruth Relator",
   },
   {
     name: "Gmail",
     href: "https://mail.google.com/mail/?view=cm&to=maryruth.pesidas.relator@gmail.com",
-    logo: "/icons/gmail.png",
+    logo: gmailIcon.src,
     handle: "maryruth.pesidas.relator@gmail.com",
   },
   {
     name: "GitHub",
     href: "https://github.com/MaryRuth17",
-    logo: "/icons/github.png",
+    logo: githubIcon.src,
     handle: "Mary Ruth Relator",
   },
 ];

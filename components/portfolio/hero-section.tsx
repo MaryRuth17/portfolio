@@ -4,6 +4,7 @@ import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Shuffle from "@/components/ui/Shuffle";
 import Image from "next/image";
+import profileImg from "@/assets/images/profile.jpg";
 
 interface HeroSectionProps {
   onScrollDown: () => void;
@@ -103,7 +104,7 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
                 style={{ width: "clamp(10rem, 28vw, 26rem)" }}
               >
                 <Image 
-                  src="/profile.JPG" 
+                  src={profileImg} 
                   alt="Mary Ruth Relator" 
                   width={400} 
                   height={400} 

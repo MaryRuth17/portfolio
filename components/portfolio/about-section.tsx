@@ -8,6 +8,17 @@ import Shuffle from "@/components/ui/Shuffle";
 import Stack from "@/components/ui/Stack";
 import { useState } from "react";
 
+import profile1Img       from "@/assets/images/profile1.jpeg";
+import profile2Img       from "@/assets/images/profile2.jpeg";
+import profile3Img       from "@/assets/images/profile3.png";
+import profile4Img       from "@/assets/images/profile4.jpg";
+import pupLogoImg        from "@/assets/images/PUP.png";
+import auLogoImg         from "@/assets/images/AU.png";
+import pcwhsLogoImg      from "@/assets/images/PCWHS.png";
+import publicRelationsImg from "@/assets/images/public-relations.jpg";
+import journalismImg     from "@/assets/images/journalism.jpg";
+import studentLeaderImg  from "@/assets/images/student-leadership.jpg";
+
 const skillsfront = [
   "JavaScript (ES6+)",
   "TypeScript",
@@ -117,10 +128,10 @@ export function AboutSection() {
                 sensitivity={200}
                 sendToBackOnClick={true}
                 cards={[
-                  "/profile1.JPEG",
-                  "/profile2.JPEG",
-                  "/profile3.png",
-                  "/profile4.JPG"
+                  profile1Img.src,
+                  profile2Img.src,
+                  profile3Img.src,
+                  profile4Img.src,
                 ].map((src, i) => (
                   <img 
                     key={i} 
@@ -271,7 +282,7 @@ export function AboutSection() {
             </div>
             <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
               <div className="relative w-100 h-100 opacity-20">
-                <Image src="/PUP.png" alt="PUP Logo" fill className="object-contain" />
+                <Image src={pupLogoImg} alt="PUP Logo" fill className="object-contain" />
               </div>
             </div>
           </div>
@@ -293,7 +304,7 @@ export function AboutSection() {
             </div>
             <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
               <div className="relative w-100 h-100 opacity-20">
-                <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
+                <Image src={auLogoImg} alt="Arellano University Logo" fill className="object-contain" />
               </div>
             </div>
           </div>
@@ -370,7 +381,7 @@ export function AboutSection() {
             <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
-                  src="/public-relations.jpg"
+                  src={publicRelationsImg.src}
                   alt="Public Relations"
                   className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
@@ -401,7 +412,7 @@ export function AboutSection() {
             <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
-                  src="/journalism.jpg"
+                  src={journalismImg.src}
                   alt="Journalism"
                   className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
@@ -433,7 +444,7 @@ export function AboutSection() {
             <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
-                  src="/student-leadership.jpg"
+                  src={studentLeaderImg.src}
                   alt="Student Leadership"
                   className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105 group-hover/image:brightness-110"
                 />
@@ -549,7 +560,7 @@ export function AboutSection() {
             {/* Hover logo overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-card/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
               <div className="relative w-48 h-48 opacity-20">
-                <Image src="/AU.png" alt="Arellano University Logo" fill className="object-contain" />
+                <Image src={auLogoImg} alt="Arellano University Logo" fill className="object-contain" />
               </div>
             </div>
           </div>
@@ -611,7 +622,7 @@ export function AboutSection() {
             {/* Hover logo overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-card/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
               <div className="relative w-48 h-48 opacity-20">
-                <Image src="/PCWHS.png" alt="PCWHS Logo" fill className="object-contain" />
+                <Image src={pcwhsLogoImg} alt="PCWHS Logo" fill className="object-contain" />
               </div>
             </div>
           </div>

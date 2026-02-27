@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { X, User, Mail, FolderOpen } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import profileImg from "@/assets/images/profile.jpg";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -66,7 +67,7 @@ function ProfileAvatar({ size = 28 }: { size?: number }) {
       style={{ width: size, height: size }}
     >
       <Image
-        src="/profile.JPG"
+        src={profileImg}
         alt="Mary"
         width={size}
         height={size}
@@ -413,7 +414,7 @@ export function FloatingActionButton() {
                   className="absolute inset-0 overflow-hidden rounded-full"
                 >
                   <Image
-                    src="/profile.JPG"
+                    src={profileImg}
                     alt="Mary"
                     fill
                     className="object-cover"

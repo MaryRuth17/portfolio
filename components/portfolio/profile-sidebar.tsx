@@ -7,10 +7,21 @@ import { motion, AnimatePresence } from "motion/react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
+// Static imports — webpack emits these as `/_next/static/media/[hash][ext]`
+// so the original filenames are never exposed in DevTools.
+import ezekielImg   from "@/assets/images/ezekiel.jpg";
+import zekeImg      from "@/assets/images/zeke.jpg";
+import linkedinIcon  from "@/assets/images/icons/linkedin.png";
+import instagramIcon from "@/assets/images/icons/instagram.png";
+import facebookIcon  from "@/assets/images/icons/facebook.png";
+import feature1Img  from "@/assets/images/feature.jpg";
+import feature2Img  from "@/assets/images/feature2.jpg";
+import feature3Img  from "@/assets/images/feature3.jpg";
+
 const socialLinks = [
   {
     name: "Website",
-    icon: "/zeke.jpg",
+    icon: zekeImg.src,
     url: "https://www.heyzeke.me/",
     label: "heyzeke.me",
     color: "hover:border-zinc-400/60 hover:bg-zinc-500/10",
@@ -18,7 +29,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    icon: "/icons/linkedin.png",
+    icon: linkedinIcon.src,
     url: "https://www.linkedin.com/in/ezekielgbustamante/",
     label: "Ezekiel Bustamante",
     color: "hover:border-blue-400/60 hover:bg-blue-500/10",
@@ -26,7 +37,7 @@ const socialLinks = [
   },
   {
     name: "Instagram",
-    icon: "/icons/instagram.png",
+    icon: instagramIcon.src,
     url: "https://www.instagram.com/kielsough/",
     label: "@kielsough",
     color: "hover:border-pink-400/60 hover:bg-pink-500/10",
@@ -34,7 +45,7 @@ const socialLinks = [
   },
   {
     name: "Facebook",
-    icon: "/icons/facebook.png",
+    icon: facebookIcon.src,
     url: "https://www.facebook.com/ezekiel.bustamante.549",
     label: "Ezekiel Bustamante",
     color: "hover:border-blue-500/60 hover:bg-blue-600/10",
@@ -43,9 +54,9 @@ const socialLinks = [
 ];
 
 const featuredPhotos = [
-  { src: "/feature.jpg"},
-  { src: "/feature2.jpg"},
-  { src: "/feature3.jpg"},
+  { src: feature1Img.src },
+  { src: feature2Img.src },
+  { src: feature3Img.src },
 ];
 
 interface ProfileSidebarProps {
@@ -119,7 +130,7 @@ export function ProfileSidebar({ isOpen, onToggle }: ProfileSidebarProps) {
             <div className="relative w-24 h-24 rounded-full p-[2.5px] bg-gradient-to-br from-accent/80 via-accent/30 to-transparent">
               <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-background/60 shadow-xl">
                 <Image
-                  src="/ezekiel.jpg"
+                  src={ezekielImg}
                   alt="Ezekiel Bustamante"
                   fill
                   className="object-cover scale-105"
