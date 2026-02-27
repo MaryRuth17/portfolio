@@ -170,12 +170,12 @@ export function ProjectsSection() {
           style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
         >
           {/* Slide */}
-          <div className="max-w-[780px] mx-auto">
+          <div className="max-w-3xl mx-auto">
             {isMoreToGo ? (
               /* ── More to Come card ── */
               <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                {/* Left placeholder — mirrors the image card */}
-                <div className="group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden border border-dashed border-accent/40 bg-accent/5 flex items-center justify-center transition-all duration-300 hover:border-accent hover:shadow-md hover:shadow-accent/10">
+                {/* Left placeholder — mirrors the image card with fluid sizing */}
+                <div className="group relative shrink-0 w-full sm:w-[clamp(14rem,45%,24rem)] aspect-[16/10] rounded-2xl overflow-hidden border border-dashed border-accent/40 bg-accent/5 flex items-center justify-center transition-all duration-300 hover:border-accent hover:shadow-md hover:shadow-accent/10">
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 transition-transform duration-300 group-hover:scale-110">
                     <Sparkles className="h-8 w-8 text-accent" />
                   </div>
@@ -206,10 +206,10 @@ export function ProjectsSection() {
             ) : (
               /* ── Real project — image card + outside text ── */
               <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                {/* Image card — no text inside */}
+                {/* Image card — aspect-ratio used instead of fixed height for fluid scaling */}
                 <div
                   className={cn(
-                    "group relative shrink-0 w-full sm:w-[380px] h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-gradient-to-br shadow-md",
+                    "group relative shrink-0 w-full sm:w-[clamp(14rem,45%,24rem)] aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br shadow-md",
                     project!.gradient
                   )}
                   onMouseEnter={() => setHoveredProject(project!.title)}
@@ -221,7 +221,7 @@ export function ProjectsSection() {
                         src={project!.image}
                         alt={`${project!.title} screenshot`}
                         fill
-                        sizes="400px"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 24rem"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -268,7 +268,7 @@ export function ProjectsSection() {
           </div>
 
           {/* Navigation controls */}
-          <div className="mt-5 max-w-[780px] mx-auto flex items-center justify-between gap-4">
+          <div className="mt-5 max-w-3xl mx-auto flex items-center justify-between gap-4">
             {/* Back button */}
             <button
               onClick={goPrev}

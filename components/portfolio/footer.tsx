@@ -66,7 +66,7 @@ export function Footer() {
         {/* Top border glow line */}
         <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
       </div>
-      <div className="flex flex-col gap-8 sm:gap-10 w-full px-4 sm:px-8 lg:px-16">
+      <div className="mx-auto w-full max-w-6xl 2xl:max-w-[90rem] flex flex-col gap-8 sm:gap-10 px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="w-full flex flex-col lg:flex-row items-start gap-8 lg:gap-14">
           {/* Left: heading + description, vertically centered */}
           <div className="text-left space-y-4 lg:w-[28%] flex flex-col justify-center self-stretch">
@@ -93,8 +93,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Right: Social links grid: 3 columns x 2 rows */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {/* Right: Social links grid — 1 col mobile, 2 cols tablet, 3 cols desktop, up to 3 cols ultrawide */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {socialLinks.map((link, index) => {
               const isMailto = link.href.startsWith('mailto:');
               return (

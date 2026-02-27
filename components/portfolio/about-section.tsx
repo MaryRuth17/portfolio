@@ -66,7 +66,7 @@ export function AboutSection() {
       {/* Section Header*/}
       <div 
         ref={headerRef}
-        className={`flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
+        className={`flex flex-col sm:flex-row items-center sm:items-center justify-between gap-6 mb-6 scroll-reveal ${headerRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
         <div className="space-y-3 flex-1">
@@ -106,9 +106,12 @@ export function AboutSection() {
           </div>
         </div>
         
-          {/* Profile Picture*/}
-          <div className="relative group shrink-0">
-            <div className="overflow-hidden rounded-2xl w-60 h-60 sm:w-72 sm:h-72">
+          {/* Profile Picture — clamp() ensures fluid scaling across all screen sizes */}
+          <div className="relative group shrink-0 flex justify-center">
+            <div
+              className="overflow-hidden rounded-2xl"
+              style={{ width: "clamp(9rem, 22vw, 18rem)", height: "clamp(9rem, 22vw, 18rem)" }}
+            >
               <Stack
                 randomRotation={false}
                 sensitivity={200}
@@ -361,7 +364,7 @@ export function AboutSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="max-w-[780px] mx-auto px-0 sm:px-4">
+        <div className="max-w-3xl mx-auto px-0 sm:px-4">
           {/* Public Relations Card */}
           {activeTab === 'Public Relations' && (
             <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">

@@ -17,6 +17,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [showHeader, setShowHeader] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
@@ -153,11 +154,11 @@ export default function Portfolio() {
     <>
       <BackgroundEffect />
       <CustomCursor />
-      <ProfileSidebar />
+      <ProfileSidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen((p) => !p)} />
       
       {/* Header - appears after scrolling past hero */}
       <div className={`transition-all duration-700 ease-out ${showHeader ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-        <Header activeSection={activeSection} onNavigate={scrollToSection} />
+        <Header activeSection={activeSection} onNavigate={scrollToSection} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((p) => !p)} />
       </div>
       
       <main>
@@ -165,20 +166,20 @@ export default function Portfolio() {
         <HeroSection onScrollDown={() => scrollToSection("about")} />
 
         {/* Scroll Velocity Transition - Large and tilted */}
-        <div className="overflow-hidden -rotate-2 scale-110 my-8">
+        <div className="overflow-hidden sm:-rotate-2 sm:scale-110 my-4 sm:my-8 xl:my-12">
           <ScrollVelocity
             texts={["Software Development", "Cybersecurity"]}
             velocity={120}
             damping={50}
             stiffness={400}
             numCopies={6}
-            className="text-[15vw] sm:text-[13vw] md:text-[10vw] font-bold tracking-tighter text-foreground py-12 sm:py-16 leading-none"
+            className="text-[12vw] sm:text-[13vw] md:text-[10vw] font-bold tracking-tighter text-foreground py-8 sm:py-16 leading-none"
             velocityMapping={{ input: [0, 1000], output: [0, 5] }}
           />
         </div>
 
-        {/* Main content */}
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Main content — fluid padding grows from 1 rem on phones to 4 rem on ultrawide */}
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:max-w-[90rem] 2xl:px-16">
           {/* About Section */}
           <section 
             ref={(el) => { sectionRefs.current.about = el; }}
@@ -206,7 +207,7 @@ export default function Portfolio() {
           </section>
         </div>
 
-        <div className="mt-20">
+        <div className="mt-16 lg:mt-24 xl:mt-32">
           <Footer />
         </div>
       </main>

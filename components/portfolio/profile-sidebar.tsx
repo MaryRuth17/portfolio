@@ -48,8 +48,12 @@ const featuredPhotos = [
   { src: "/feature3.jpg"},
 ];
 
-export function ProfileSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+interface ProfileSidebarProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+export function ProfileSidebar({ isOpen, onToggle }: ProfileSidebarProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [photoDir, setPhotoDir] = useState(1);
 
@@ -64,7 +68,9 @@ export function ProfileSidebar() {
       <div
         className={cn(
           "fixed left-0 top-1/2 -translate-y-1/2 z-40",
-          "flex flex-col w-60 h-[82vh] overflow-hidden",
+          /* Sidebar panel — width is capped at 85 vw so it never overflows on tiny phones */
+          "flex flex-col h-[82svh] overflow-hidden",
+          "w-[min(15rem,85vw)]",
           "bg-background/[0.97] backdrop-blur-2xl",
           "border border-border/50 rounded-r-3xl",
           "shadow-[6px_0_48px_-8px_rgba(0,0,0,0.5)]",
@@ -278,70 +284,11 @@ export function ProfileSidebar() {
         </div>
       </div>
 
-      {/* ── Toggle button ── */}
-      <div
-        className={cn(
-          "fixed top-1/2 -translate-y-1/2 z-50",
-          "transition-[left] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-          isOpen ? "left-[calc(15rem+12px)]" : "left-3"
-        )}
-      >
-        <motion.div
-          animate={isOpen ? { y: 0 } : { y: [0, -6, 0] }}
-          transition={isOpen ? {} : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <motion.button
-            onClick={() => setIsOpen((prev) => !prev)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.93 }}
-            aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-            className={cn(
-              "relative flex h-11 w-11 items-center justify-center rounded-full",
-              "shadow-xl transition-all duration-300 focus:outline-none",
-              "focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2",
-              "bg-[var(--accent)] text-[var(--accent-foreground)] shadow-accent/40 hover:shadow-accent/60"
-            )}
-          >
-            {/* Pulsing ring */}
-            <motion.span
-              className="absolute inset-0 rounded-full bg-[var(--accent)]"
-              animate={{ scale: [1, 1.6], opacity: [0.45, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-            />
-
-            {/* Arrow icon — flips direction based on open state */}
-            <AnimatePresence mode="wait" initial={false}>
-              {isOpen ? (
-                <motion.span
-                  key="close"
-                  initial={{ x: 6, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -6, opacity: 0 }}
-                  transition={{ duration: 0.18 }}
-                >
-                  <ChevronLeft size={20} strokeWidth={2.5} />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="open"
-                  initial={{ x: -6, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 6, opacity: 0 }}
-                  transition={{ duration: 0.18 }}
-                >
-                  <ChevronRight size={20} strokeWidth={2.5} />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        </motion.div>
-      </div>
-
       {/* Backdrop overlay on mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 z-30 bg-black/30 backdrop-blur-[2px] sm:hidden"
-          onClick={() => setIsOpen(false)}
+          onClick={onToggle}
         />
       )}
     </>

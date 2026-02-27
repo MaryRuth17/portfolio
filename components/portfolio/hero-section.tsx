@@ -11,17 +11,26 @@ interface HeroSectionProps {
 
 export function HeroSection({ onScrollDown }: HeroSectionProps) {
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 sm:px-6 lg:px-8 animate-fade-in">
-      {/* Background decorative elements */}
+    <section className="relative flex min-h-[100svh] items-start sm:items-center justify-center px-4 sm:px-6 lg:px-8 xl:px-12 animate-fade-in pt-24 sm:pt-0">
+      {/* Background decorative elements — sized with vw so they scale on every display */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/5 blur-3xl animate-pulse" style={{ animationDuration: "4s" }} />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-3xl animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-secondary/50 blur-3xl" />
+        <div
+          className="absolute top-1/4 left-1/4 rounded-full bg-accent/5 blur-3xl animate-pulse"
+          style={{ width: "clamp(10rem, 20vw, 28rem)", height: "clamp(10rem, 20vw, 28rem)", animationDuration: "4s" }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 rounded-full bg-accent/10 blur-3xl animate-pulse"
+          style={{ width: "clamp(12rem, 25vw, 32rem)", height: "clamp(12rem, 25vw, 32rem)", animationDuration: "5s", animationDelay: "1s" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary/50 blur-3xl"
+          style={{ width: "clamp(14rem, 28vw, 40rem)", height: "clamp(14rem, 28vw, 40rem)" }}
+        />
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+      {/* Content Container — grows past 7xl on ultrawide displays */}
+      <div className="relative z-10 w-full max-w-7xl 2xl:max-w-[90rem] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left lg:pl-8 order-2 lg:order-1">
             {/* Greeting */}
@@ -72,10 +81,8 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
               >
                 View My Work
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 text-base transition-all duration-300 hover:scale-105 bg-transparent"
+              <button
+                className="inline-flex items-center justify-center h-12 px-8 text-base font-medium rounded-md border-2 border-accent/70 text-foreground bg-transparent transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-accent-foreground hover:border-accent hover:shadow-lg hover:shadow-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 onClick={() => {
                   const contactSection = document.getElementById("contact");
                   if (contactSection) {
@@ -84,14 +91,17 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
                 }}
               >
                 Get In Touch
-              </Button>
+              </button>
             </div>
           </div>
 
-          {/* Right Side - Profile Picture */}
+          {/* Right Side - Profile Picture — clamp() ensures fluid scaling from phones (10rem) to ultrawide (26rem) */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in-up" style={{animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards"}}>
             <div className="relative group">
-              <div className="w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-accent/20 via-secondary to-muted flex items-center justify-center border-4 border-border/50 shadow-2xl animate-scale-in overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-accent/20 hover:shadow-3xl">
+              <div
+                className="aspect-square rounded-3xl bg-gradient-to-br from-accent/20 via-secondary to-muted flex items-center justify-center border-4 border-border/50 shadow-2xl animate-scale-in overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-accent/20 hover:shadow-3xl"
+                style={{ width: "clamp(10rem, 28vw, 26rem)" }}
+              >
                 <Image 
                   src="/profile.JPG" 
                   alt="Mary Ruth Relator" 
