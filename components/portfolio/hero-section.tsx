@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Code2, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Shuffle from "@/components/ui/Shuffle";
 import Image from "next/image";

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import Shuffle from "@/components/ui/Shuffle";
 
@@ -44,8 +43,6 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer id="contact" className="relative overflow-hidden border-t border-border/40 py-20 transition-colors duration-500">
       {/* Background layers */}

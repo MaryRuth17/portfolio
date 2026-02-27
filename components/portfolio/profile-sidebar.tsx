@@ -64,7 +64,7 @@ export function ProfileSidebar() {
       <div
         className={cn(
           "fixed left-0 top-1/2 -translate-y-1/2 z-40",
-          "flex flex-col w-60 max-h-[82vh] overflow-hidden",
+          "flex flex-col w-60 h-[82vh] overflow-hidden",
           "bg-background/[0.97] backdrop-blur-2xl",
           "border border-border/50 rounded-r-3xl",
           "shadow-[6px_0_48px_-8px_rgba(0,0,0,0.5)]",

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { MapPin, Briefcase, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Shuffle from "@/components/ui/Shuffle";
 import Stack from "@/components/ui/Stack";
