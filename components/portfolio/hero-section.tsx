@@ -93,7 +93,7 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
             <div className="relative group">
               <div className="w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-accent/20 via-secondary to-muted flex items-center justify-center border-4 border-border/50 shadow-2xl animate-scale-in overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-accent/20 hover:shadow-3xl">
                 <Image 
-                  src="/profile.jpg" 
+                  src="/profile.JPG" 
                   alt="Mary Ruth Relator" 
                   width={400} 
                   height={400} 

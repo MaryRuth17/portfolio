@@ -13,7 +13,7 @@ const featuredProjects = [
     title: "By7eQuest",
     description:
       "By7eQuest is a gamified approach to mastering Data Structures and Algorithms. It transforms complex concepts into interactive minigames to enhance student engagement and retention.",
-    image: "/by7equest.jpg",
+    image: "/By7equest.jpg",
     gradient: "from-blue-500/20 via-cyan-500/10 to-teal-500/20",
     technologies: ["Unity", "Microsoft PlayFab", "ShaderLab", "HLSL"],
     github: "https://github.com/mjcarant0/by7equest",
@@ -23,7 +23,7 @@ const featuredProjects = [
     title: "Kaching!",
     description:
       "A gamified budget tracker featuring an AI-driven financial guide, interactive mini-games, and social leaderboards. It leverages a rewards-based leveling system to encourage financial discipline through social connectivity and personalized AI insights.",
-    image: "/kaching.jpg",
+    image: "/Kaching.jpg",
     gradient: "from-pink-500/20 via-rose-500/10 to-orange-500/20",
     technologies: ["Unity", "C#", "ShaderLab"],
     github: "https://github.com/mjcarant0/Kaching",
