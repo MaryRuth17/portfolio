@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 // Static imports — webpack emits these as `/_next/static/media/[hash][ext]`
 // so the original filenames are never exposed in DevTools.
+import type { StaticImageData } from 'next/image';
 import by7erequestImg from "@/assets/images/By7equest.jpg";
 import kachingImg     from "@/assets/images/Kaching.jpg";
 import ciscoIcon     from "@/assets/images/icons/cisco.png";
@@ -25,7 +26,7 @@ const featuredProjects = [
     title: "By7eQuest",
     description:
       "By7eQuest is a gamified approach to mastering Data Structures and Algorithms. It transforms complex concepts into interactive minigames to enhance student engagement and retention.",
-    image: by7erequestImg.src,
+    image: by7erequestImg,
     gradient: "from-blue-500/20 via-cyan-500/10 to-teal-500/20",
     technologies: ["Unity", "Microsoft PlayFab", "ShaderLab", "HLSL"],
     github: "https://github.com/mjcarant0/by7equest",
@@ -35,7 +36,7 @@ const featuredProjects = [
     title: "Kaching!",
     description:
       "A gamified budget tracker featuring an AI-driven financial guide, interactive mini-games, and social leaderboards. It leverages a rewards-based leveling system to encourage financial discipline through social connectivity and personalized AI insights.",
-    image: kachingImg.src,
+    image: kachingImg,
     gradient: "from-pink-500/20 via-rose-500/10 to-orange-500/20",
     technologies: ["Unity", "C#", "ShaderLab"],
     github: "https://github.com/mjcarant0/Kaching",
@@ -50,7 +51,7 @@ const certifications = [
     date: "2026",
     link: "https://www.credly.com/badges/e617c446-8a7c-4c02-868d-1c960cd9cf16/public_url",
     credentialId: "",
-    logo: ciscoIcon.src,
+    logo: ciscoIcon,
   },
   {
     title: "Machine Learning, Artificial Intelligence (AI), and Cybersecurity",
@@ -58,7 +59,7 @@ const certifications = [
     date: "2026",
     link: "https://www.coursera.org/account/accomplishments/badge/Rs3kDOjJSxCN5AzoyQsQCA",
     credentialId: "Rs3kDOjJSxCN5AzoyQsQCA",
-    logo: courseraIcon.src,
+    logo: courseraIcon,
   },
   {
     title: "See All Certifications",
@@ -76,7 +77,7 @@ const organizationalExperience = [
     title: "VP For Business Development",
     company: "CyberPH",
     link: "https://www.facebook.com/LearnCyberPH",
-    logo: cyberphImg.src,
+    logo: cyberphImg,
     description:
       "Driving strategic growth and industry partnerships to expand CyberPH's impact within the Philippine cybersecurity ecosystem.",
   },
@@ -85,7 +86,7 @@ const organizationalExperience = [
     title: "External Relations Officer - Executive Auditor",
     company: "ICPEP SE - PUP",
     link: "https://www.facebook.com/icpepse.pupmanila",
-    logo: icpepImg.src,
+    logo: icpepImg,
     description:
       "Managing external organizational relations to ensuring financial transparency and procedural compliance through rigorous executive auditing.",
   },
@@ -94,7 +95,7 @@ const organizationalExperience = [
     title: "Cybersecurity Cadet / Industry Partnerships Co-Lead",
     company: "GDG on Campus PUP",
     link: "https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/?fbclid=IwY2xjawQNoctleHRuA2FlbQIxMABicmlkETJrRlZHeWJKVU0yUGZRcVVTc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHokqQmKpkdiL74wWUJLKL-6rP4W2sWyeiGACGbJeybdgVocphaVGOGX6a-Rj_aem_29iMPkxLaZQfij4_ZRuomw",
-    logo: gdgImg.src,
+    logo: gdgImg,
     description:
       "Cultivating high-impact industry partnerships andadvancing technical proficiency within the cybersecurity cadetship program.",
   },
@@ -103,7 +104,7 @@ const organizationalExperience = [
     title: "Partnerships Committee",
     company: "Arduino Day Philippines",
     link: "https://www.facebook.com/arduinodayph",
-    logo: adphImg.src,
+    logo: adphImg,
     description:
       "Securing strategic sponsorships and community collaborations to drive the success of nationwide hardware and IoT initiatives.",
   },
@@ -112,7 +113,7 @@ const organizationalExperience = [
     title: "External Relations Officer",
     company: "AWS Cloud Clubs Philippines - SCD 2025",
     link: "https://www.facebook.com/AWSCloudClubsPhilippines",
-    logo: awscdImg.src,
+    logo: awscdImg,
     description:
       "Managing external organizational relations and coordinating with industry partners to support AWS Cloud Clubs Philippines' initiatives.",
   },
@@ -411,9 +412,11 @@ export function ProjectsSection() {
                     <div className="flex items-start gap-3">
                       {job.logo && (
                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 border border-border/50 transition-all duration-300 group-hover:scale-110 group-hover:border-accent/40 group-hover:shadow-md group-hover:shadow-accent/20">
-                          <img
+                          <Image
                             src={job.logo}
                             alt={`${job.company} logo`}
+                            width={44}
+                            height={44}
                             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>

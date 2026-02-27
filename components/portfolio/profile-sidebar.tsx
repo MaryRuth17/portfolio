@@ -21,7 +21,7 @@ import feature3Img  from "@/assets/images/feature3.jpg";
 const socialLinks = [
   {
     name: "Website",
-    icon: zekeImg.src,
+    icon: zekeImg,
     url: "https://www.heyzeke.me/",
     label: "heyzeke.me",
     color: "hover:border-zinc-400/60 hover:bg-zinc-500/10",
@@ -29,7 +29,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    icon: linkedinIcon.src,
+    icon: linkedinIcon,
     url: "https://www.linkedin.com/in/ezekielgbustamante/",
     label: "Ezekiel Bustamante",
     color: "hover:border-blue-400/60 hover:bg-blue-500/10",
@@ -37,7 +37,7 @@ const socialLinks = [
   },
   {
     name: "Instagram",
-    icon: instagramIcon.src,
+    icon: instagramIcon,
     url: "https://www.instagram.com/kielsough/",
     label: "@kielsough",
     color: "hover:border-pink-400/60 hover:bg-pink-500/10",
@@ -45,7 +45,7 @@ const socialLinks = [
   },
   {
     name: "Facebook",
-    icon: facebookIcon.src,
+    icon: facebookIcon,
     url: "https://www.facebook.com/ezekiel.bustamante.549",
     label: "Ezekiel Bustamante",
     color: "hover:border-blue-500/60 hover:bg-blue-600/10",
@@ -54,9 +54,9 @@ const socialLinks = [
 ];
 
 const featuredPhotos = [
-  { src: feature1Img.src },
-  { src: feature2Img.src },
-  { src: feature3Img.src },
+  { src: feature1Img },
+  { src: feature2Img },
+  { src: feature3Img },
 ];
 
 interface ProfileSidebarProps {
