@@ -16,7 +16,6 @@ import { ProfileSidebar } from "@/components/portfolio/profile-sidebar";
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [showHeader, setShowHeader] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -36,18 +35,11 @@ export default function Portfolio() {
     }
   };
 
-  // Scroll to about section from hero
-  const scrollToAbout = () => {
-    scrollToSection("about");
-  };
-
   // Update active section and header visibility based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const heroHeight = window.innerHeight * 0.3;
-      
-      setLastScrollY(scrollPosition);
       
       // Show header after scrolling past hero
       setShowHeader(scrollPosition > heroHeight);
@@ -170,7 +162,7 @@ export default function Portfolio() {
       
       <main>
         {/* Hero Section - Full viewport */}
-        <HeroSection onScrollDown={scrollToAbout} />
+        <HeroSection onScrollDown={() => scrollToSection("about")} />
 
         {/* Scroll Velocity Transition - Large and tilted */}
         <div className="overflow-hidden -rotate-2 scale-110 my-8">
