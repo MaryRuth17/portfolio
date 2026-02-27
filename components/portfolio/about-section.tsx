@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { MapPin, Briefcase, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import Shuffle from "@/components/ui/Shuffle";
 import Stack from "@/components/ui/Stack";
-import CircularGallery from "@/components/ui/CircularGallery";
 import { useState } from "react";
 
 const skillsfront = [
@@ -59,11 +58,11 @@ export function AboutSection() {
   const { ref: academicRef, isRevealed: academicRevealed } = useScrollReveal({ 
     triggerOnce: false, 
     threshold: 0.05, 
-    rootMargin: "200px 0px -50px 0px" 
+    rootMargin: "0px 0px 300px 0px" 
   });
 
   return (
-    <section className="py-6 lg:py-8">
+    <section className="pt-12 lg:pt-16">
       {/* Section Header*/}
       <div 
         ref={headerRef}
@@ -225,7 +224,7 @@ export function AboutSection() {
       {/* Education Section */}
       <div 
         ref={educationRef}
-        className={`mt-10 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${educationRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">
@@ -252,8 +251,7 @@ export function AboutSection() {
         </div>
         
         <div className="space-y-4">
-          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-red-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5">
-            <div className="h-1.5 w-full bg-gradient-to-r from-red-600 via-red-500/60 to-transparent" />
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:!border-red-500/60 bg-card transition-all duration-300 hover:![box-shadow:0_0_22px_4px_rgba(239,68,68,0.30)]">
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-500/10 border border-red-500/20">
@@ -275,8 +273,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:border-blue-500/40 bg-card transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
-            <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-blue-500/60 to-transparent" />
+          <div className="smooth-card stagger-child group relative overflow-hidden rounded-2xl border border-border/50 hover:!border-blue-500/60 bg-card transition-all duration-300 hover:![box-shadow:0_0_22px_4px_rgba(59,130,246,0.30)]">
             <div className="flex items-start justify-between gap-3 p-4 sm:p-5 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20">
@@ -303,7 +300,7 @@ export function AboutSection() {
       {/* Other Skills Section */}
       <div 
         ref={otherSkillsRef}
-        className={`mt-10 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${otherSkillsRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">
@@ -330,7 +327,7 @@ export function AboutSection() {
         </div>
         
         {/* Tab Buttons */}
-        <div className="flex justify-center gap-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
           <button
             onClick={() => setActiveTab('Public Relations')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
@@ -364,10 +361,10 @@ export function AboutSection() {
         </div>
 
         {/* Cards Container */}
-        <div className="max-w-[780px] mx-auto px-4">
+        <div className="max-w-[780px] mx-auto px-0 sm:px-4">
           {/* Public Relations Card */}
           {activeTab === 'Public Relations' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/public-relations.jpg"
@@ -398,7 +395,7 @@ export function AboutSection() {
 
           {/* Journalism Card */}
           {activeTab === 'Journalism' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/journalism.jpg"
@@ -430,7 +427,7 @@ export function AboutSection() {
 
           {/* Student Leadership Card */}
           {activeTab === 'Student Leadership' && (
-            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col h-[290px]">
+            <div className="smooth-card rounded-2xl border border-border/50 bg-card overflow-hidden animate-in fade-in duration-500 flex flex-col min-h-[290px] h-auto">
               <div className="relative h-32 overflow-hidden group/image">
                 <img
                   src="/student-leadership.jpg"
@@ -462,20 +459,10 @@ export function AboutSection() {
         </div>
       </div>
 
-      {/* Circular Gallery Section */}
-      <div className="mt-10 overflow-hidden" style={{ height: '600px', position: 'relative', isolation: 'isolate', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
-        <CircularGallery 
-          bend={1}
-          borderRadius={0.05}
-          scrollSpeed={2}
-          scrollEase={0.05}
-        />
-      </div>
-
       {/* Academic Credentials Section */}
       <div 
         ref={academicRef}
-        className={`mt-10 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
+        className={`mt-20 scroll-reveal ${academicRevealed ? 'revealed' : ''}`}
         style={{ isolation: 'isolate', transform: 'translateZ(0)', transition: 'opacity 0.8s ease-out, transform 0.8s ease-out' }}
       >
           <div className="mb-6">

@@ -11,11 +11,11 @@ import { ProjectsSection } from "@/components/portfolio/projects-section";
 import { Footer } from "@/components/portfolio/footer";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
 import { FloatingActionButton } from "@/components/portfolio/floating-action-button";
+import { ProfileSidebar } from "@/components/portfolio/profile-sidebar";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [showHeader, setShowHeader] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -35,18 +35,11 @@ export default function Portfolio() {
     }
   };
 
-  // Scroll to about section from hero
-  const scrollToAbout = () => {
-    scrollToSection("about");
-  };
-
   // Update active section and header visibility based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const heroHeight = window.innerHeight * 0.3;
-      
-      setLastScrollY(scrollPosition);
       
       // Show header after scrolling past hero
       setShowHeader(scrollPosition > heroHeight);
@@ -160,6 +153,7 @@ export default function Portfolio() {
     <>
       <BackgroundEffect />
       <CustomCursor />
+      <ProfileSidebar />
       
       {/* Header - appears after scrolling past hero */}
       <div className={`transition-all duration-700 ease-out ${showHeader ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
@@ -168,7 +162,7 @@ export default function Portfolio() {
       
       <main>
         {/* Hero Section - Full viewport */}
-        <HeroSection onScrollDown={scrollToAbout} />
+        <HeroSection onScrollDown={() => scrollToSection("about")} />
 
         {/* Scroll Velocity Transition - Large and tilted */}
         <div className="overflow-hidden -rotate-2 scale-110 my-8">
@@ -202,7 +196,7 @@ export default function Portfolio() {
           <section 
             ref={(el) => { sectionRefs.current.projects = el; }}
             id="projects" 
-            className={`scroll-mt-28 transition-all duration-700 ease-out ${
+            className={`mt-20 scroll-mt-28 transition-all duration-700 ease-out ${
               animatedSections.has("projects") 
                 ? "animate-fade-in-up" 
                 : ""
@@ -212,7 +206,9 @@ export default function Portfolio() {
           </section>
         </div>
 
-        <Footer />
+        <div className="mt-20">
+          <Footer />
+        </div>
       </main>
 
       <FloatingActionButton />

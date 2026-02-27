@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Code2, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Shuffle from "@/components/ui/Shuffle";
 import Image from "next/image";
@@ -21,22 +21,22 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
-          <div className="space-y-8 text-left lg:pl-8">
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left lg:pl-8 order-2 lg:order-1">
             {/* Greeting */}
-            <div className="space-y-4 animate-fade-in-up" style={{animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards"}}>
-              <p className="text-lg sm:text-xl text-muted-foreground font-medium">
+            <div className="space-y-3 sm:space-y-4 animate-fade-in-up" style={{animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards"}}>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium">
                 Hello, I am
               </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="gradient-text">Mary Ruth Relator</span>
               </h1>
             </div>
 
             {/* Title */}
             <div className="animate-fade-in-up" style={{animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards"}}>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center lg:justify-start gap-3">
             <Shuffle
               text="Technology Enthusiast"
               tag="p"
@@ -59,7 +59,7 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
         </div>
         
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 pt-4 animate-fade-in-up" style={{animationDelay: "0.8s", opacity: 0, animationFillMode: "forwards"}}>
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-2 sm:pt-4 animate-fade-in-up" style={{animationDelay: "0.8s", opacity: 0, animationFillMode: "forwards"}}>
               <Button
                 size="lg"
                 className="h-12 px-8 text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -89,9 +89,9 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
           </div>
 
           {/* Right Side - Profile Picture */}
-          <div className="flex justify-center lg:justify-end animate-fade-in-up" style={{animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards"}}>
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in-up" style={{animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards"}}>
             <div className="relative group">
-              <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-accent/20 via-secondary to-muted flex items-center justify-center border-4 border-border/50 shadow-2xl animate-scale-in overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-accent/20 hover:shadow-3xl">
+              <div className="w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-accent/20 via-secondary to-muted flex items-center justify-center border-4 border-border/50 shadow-2xl animate-scale-in overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-accent/20 hover:shadow-3xl">
                 <Image 
                   src="/profile.jpg" 
                   alt="Mary Ruth Relator" 

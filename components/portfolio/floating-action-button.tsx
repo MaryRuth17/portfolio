@@ -228,7 +228,7 @@ export function FloatingActionButton() {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-12 right-8 z-50 flex flex-col items-end gap-3"
+      className="fixed bottom-6 right-4 sm:bottom-24 sm:right-8 z-50 flex flex-col items-end gap-3"
     >
       {/* ── Chat window ── */}
       <AnimatePresence>
@@ -238,7 +238,7 @@ export function FloatingActionButton() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 16 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex w-80 flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/95 shadow-2xl shadow-black/20 backdrop-blur-xl"
+            className="flex w-[calc(100vw-2rem)] max-w-[320px] sm:w-80 flex-col overflow-hidden rounded-2xl border border-border/60 bg-background/95 shadow-2xl shadow-black/20 backdrop-blur-xl"
             style={{ height: "420px" }}
           >
             {/* Header */}
