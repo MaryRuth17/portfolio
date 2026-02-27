@@ -11,6 +11,7 @@ import { ProjectsSection } from "@/components/portfolio/projects-section";
 import { Footer } from "@/components/portfolio/footer";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
 import { FloatingActionButton } from "@/components/portfolio/floating-action-button";
+import { ProfileSidebar } from "@/components/portfolio/profile-sidebar";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -160,6 +161,7 @@ export default function Portfolio() {
     <>
       <BackgroundEffect />
       <CustomCursor />
+      <ProfileSidebar />
       
       {/* Header - appears after scrolling past hero */}
       <div className={`transition-all duration-700 ease-out ${showHeader ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
